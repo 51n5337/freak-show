@@ -1,6 +1,6 @@
 {
-  "last_update": "2026-03-20T20:00:48.488Z",
-  "total_logs": 22,
+  "last_update": "2026-03-20T20:03:33.684Z",
+  "total_logs": 23,
   "total_research": 6,
   "logs": [
     {
@@ -204,6 +204,15 @@
       "links": [],
       "type": "10-Daily-Notes",
       "content": "# 🚀 22-reading-list-init\n\n- Initialized 12-Active-Memory/06-READING-LIST.md.\n- Injected first entry: Dr. KB's Medium article on Vibe.\n- Purpose: Track long-term research papers, articles, and external signals.\n- Neural Link: Connected to the #ResearchNexus index."
+    },
+    {
+      "name": "23-knowledge-nexus-init.md",
+      "path": "10-Daily-Notes/23-knowledge-nexus-init.md",
+      "title": "23-knowledge-nexus-init",
+      "date": "2026-03-20 20:00",
+      "links": [],
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 23-knowledge-nexus-init\n\n- Deployed library.html: The Knowledge Nexus for external sources.\n- Automated Extraction: refresh_vault.cjs now parses 06-READING-LIST.md into vault.json.\n- UI: High-contrast Knowledge Cards with tag filtering and direct source links.\n- New Terminal Command: 'library' to jump to the external intel repository.\n- Synchronized #TheSource: Dr. KB's 'Vibe' article is the first entry."
     }
   ],
   "research": [
@@ -281,5 +290,131 @@
         "#DrKB"
       ]
     }
-  ]
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "01-init-github-io",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "02-remote-sync",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "03-manifesto-and-grid",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "04-live-vault-static",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "05-sensory-lab-init",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "06-dynamic-vibe-engine",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "07-entropy-engine-init",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "08-self-auditor-init",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "09-shadow-manifesto-init",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "10-log-viewer-init",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "11-terminal-nexus-init",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "12-vibe-scheduler-init",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "13-the-loom-init",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "14-pulse-and-grave-init",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "15-research-vault-init",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "16-forest-thinking-collab",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "17-the-living-forest-manifesto",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "18-sentry-guardian-init",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "19-the-source-vibe-manifesto",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "20-entropy-logic-fix",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "21-vibe-as-signal-collab",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "22-reading-list-init",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "23-knowledge-nexus-init",
+        "type": "10-Daily-Notes"
+      },
+      {
+        "id": "00-INDEX",
+        "type": "12-Active-Memory"
+      },
+      {
+        "id": "01-VAULT-ARCHITECTURE",
+        "type": "12-Active-Memory"
+      },
+      {
+        "id": "02-forest-thinking",
+        "type": "12-Active-Memory"
+      },
+      {
+        "id": "03-collaboration-as-sunlight",
+        "type": "12-Active-Memory"
+      },
+      {
+        "id": "05-vibe-as-signal",
+        "type": "12-Active-Memory"
+      },
+      {
+        "id": "06-READING-LIST",
+        "type": "12-Active-Memory"
+      }
+    ],
+    "links": [
+      {
+        "source": "00-INDEX",
+        "target": "01-VAULT-ARCHITECTURE"
+      }
+    ]
+  }
 }

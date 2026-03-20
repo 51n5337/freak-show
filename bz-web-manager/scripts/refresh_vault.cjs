@@ -26,7 +26,7 @@ function processDir(dir, type) {
                 date: stats.mtime.toISOString().replace('T', ' ').substring(0, 16),
                 links: links,
                 type: type,
-                content: content // Adding raw content for specific parsing
+                content: content
             };
         });
 }
@@ -34,8 +34,9 @@ function processDir(dir, type) {
 try {
     const logs = processDir(notesDir, '10-Daily-Notes');
     const research = processDir(researchDir, '12-Active-Memory');
-    
-    // Parse Reading List entries
+    const allNodes = [...logs, ...research];
+
+    // Parse Reading List
     const readingListNode = research.find(r => r.name === '06-READING-LIST.md');
     const readingEntries = [];
     if (readingListNode) {
@@ -46,7 +47,6 @@ try {
             const linkMatch = s.match(/\[(.*?)\]\((.*?)\)/);
             const summaryMatch = s.match(/- \*\*Summary\*\*: (.*)/);
             const tagsMatch = s.match(/- \*\*Tags\*\*: (.*)/);
-            
             readingEntries.push({
                 title: title,
                 link: linkMatch ? linkMatch[2] : '#',
@@ -56,18 +56,34 @@ try {
         });
     }
 
+    // Build Graph Data
+    const graphNodes = allNodes.map(n => ({ id: n.title, type: n.type }));
+    const graphLinks = [];
+    allNodes.forEach(source => {
+        source.links.forEach(target => {
+            // Only add links if target exists in our nodes
+            if (allNodes.some(n => n.title === target)) {
+                graphLinks.push({ source: source.title, target: target });
+            }
+        });
+    });
+
     const vaultData = {
         last_update: new Date().toISOString(),
         total_logs: logs.length,
         total_research: research.length,
         logs: logs,
         research: research,
-        library: readingEntries
+        library: readingEntries,
+        graph: {
+            nodes: graphNodes,
+            links: graphLinks
+        }
     };
 
     fs.writeFileSync(outputFile, JSON.stringify(vaultData, null, 2));
-    console.log('✅ Library Nexus updated: ' + readingEntries.length + ' sources mapped.');
+    console.log('✅ The Canopy is mapped: ' + allNodes.length + ' neural nodes indexed.');
 } catch (err) {
-    console.error('❌ Integration failed:', err);
+    console.error('❌ Mapping failed:', err);
     process.exit(1);
 }

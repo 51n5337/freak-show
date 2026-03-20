@@ -137,6 +137,10 @@ async function loadVault() {
                         updateTerminal('ACCESSING KNOWLEDGE NEXUS...');
                         window.location.href = 'library.html';
                         break;
+                    case 'map':
+                        updateTerminal('GENERATING NEURAL CANOPY...');
+                        window.location.href = 'map.html';
+                        break;
                     case 'time':
                         updateTerminal(`CURRENT TIME: ${new Date().toLocaleTimeString()} | SCHEDULED: #${scheduled.name}`);
                         break;
@@ -146,7 +150,7 @@ async function loadVault() {
                         break;
                     case 'help':
                         updateTerminal(`
-                            COMMANDS: ls, find <query>, research, library, vibe --manifesto, vibe <name>, time, clear, help
+                            COMMANDS: ls, find <query>, research, library, map, vibe --manifesto, vibe <name>, time, clear, help
                         `);
                         break;
                     default:
