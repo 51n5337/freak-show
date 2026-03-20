@@ -1,7 +1,7 @@
 {
-  "last_update": "2026-03-20T19:45:14.887Z",
-  "total_logs": 19,
-  "total_research": 4,
+  "last_update": "2026-03-20T19:49:49.982Z",
+  "total_logs": 20,
+  "total_research": 5,
   "logs": [
     {
       "name": "01-init-github-io.md",
@@ -158,6 +158,14 @@
       "date": "2026-03-20 19:33",
       "links": [],
       "type": "10-Daily-Notes"
+    },
+    {
+      "name": "20-entropy-logic-fix.md",
+      "path": "10-Daily-Notes/20-entropy-logic-fix.md",
+      "title": "20-entropy-logic-fix",
+      "date": "2026-03-20 19:45",
+      "links": [],
+      "type": "10-Daily-Notes"
     }
   ],
   "research": [
@@ -165,7 +173,7 @@
       "name": "00-INDEX.md",
       "path": "12-Active-Memory/00-INDEX.md",
       "title": "00-INDEX",
-      "date": "2026-03-20 19:16",
+      "date": "2026-03-20 19:49",
       "links": [
         "01-VAULT-ARCHITECTURE",
         "02-FOREST-THINKING",
@@ -196,6 +204,14 @@
       "path": "12-Active-Memory/03-collaboration-as-sunlight.md",
       "title": "03-collaboration-as-sunlight",
       "date": "2026-03-20 19:16",
+      "links": [],
+      "type": "12-Active-Memory"
+    },
+    {
+      "name": "05-vibe-as-signal.md",
+      "path": "12-Active-Memory/05-vibe-as-signal.md",
+      "title": "05-vibe-as-signal",
+      "date": "2026-03-20 19:49",
       "links": [],
       "type": "12-Active-Memory"
     }
