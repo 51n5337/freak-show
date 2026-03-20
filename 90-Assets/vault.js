@@ -38,9 +38,9 @@ function renderPulse(data) {
     const container = document.getElementById('pulse-stats');
     if (!container) return;
 
-    const totalNodes = data.total_logs + data.total_research;
-    const allNodes = [...data.logs, ...data.research];
-    const totalLinks = allNodes.reduce((acc, l) => acc + l.links.length, 0);
+    const totalNodes = (data.total_logs || 0) + (data.total_research || 0);
+    const allNodes = [...(data.logs || []), ...(data.research || [])];
+    const totalLinks = allNodes.reduce((acc, l) => acc + (l.links ? l.links.length : 0), 0);
     const density = totalNodes > 1 ? ((totalLinks / (totalNodes * (totalNodes - 1))) * 100).toFixed(2) : 0;
 
     container.innerHTML = `
@@ -114,9 +114,20 @@ async function loadVault() {
                         renderLogs(filtered);
                         break;
                     case 'vibe':
-                        const v = args[0] ? `vibe-${args[0]}` : '';
-                        setVibe(v, true);
-                        updateTerminal(`VIBE SWITCHED TO: ${args[0] || 'DEFAULT'}`);
+                        if (args[0] === '--manifesto') {
+                            const laws = [
+                                'CLARITY OVER SPECIFICITY: Define the what and the why.',
+                                'INTENTION OVER INSTRUCTION: Lead with purpose, not commands.',
+                                'AMPLIFICATION OVER REPLICATION: Let the AI elevate your idea.',
+                                'FLOW OVER FRICTION: If it feels like work, you are doing it wrong.'
+                            ];
+                            const law = laws[Math.floor(Math.random() * laws.length)];
+                            updateTerminal('<span style="color:#f0f">>> LAW OF CREATION: ' + law + '</span>');
+                        } else {
+                            const v = args[0] ? 'vibe-' + args[0] : '';
+                            setVibe(v, true);
+                            updateTerminal('VIBE SWITCHED TO: ' + (args[0] || 'DEFAULT'));
+                        }
                         break;
                     case 'research':
                         updateTerminal('ACCESSING RESEARCH VAULT...');
@@ -135,8 +146,9 @@ async function loadVault() {
                             COMMANDS:<br>
                             - <b>ls</b>: list logs<br>
                             - <b>find &lt;query&gt;</b>: filter logs<br>
-                            - <b>research</b>: enter research vault<br>
-                            - <b>vibe &lt;flicker|neon|satire&gt;</b>: switch theme<br>
+                            - <b>vibe --manifesto</b>: show a law of creation<br>
+                            - <b>vibe &lt;name&gt;</b>: switch theme<br>
+                            - <b>research</b>: enter research nexus<br>
                             - <b>time</b>: check schedule<br>
                             - <b>clear</b>: reset<br>
                             - <b>help</b>: show this menu
