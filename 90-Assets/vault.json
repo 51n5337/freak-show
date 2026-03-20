@@ -1,7 +1,7 @@
 {
-  "last_update": "2026-03-20T18:54:21.862Z",
+  "last_update": "2026-03-20T19:07:28.639Z",
   "total_logs": 15,
-  "total_research": 2,
+  "total_research": 3,
   "logs": [
     {
       "name": "01-init-github-io.md",
@@ -121,7 +121,7 @@
       "name": "15-research-vault-init.md",
       "path": "10-Daily-Notes/15-research-vault-init.md",
       "title": "15-research-vault-init",
-      "date": "2026-03-20 18:53",
+      "date": "2026-03-20 18:54",
       "links": [],
       "type": "10-Daily-Notes"
     }
@@ -131,10 +131,10 @@
       "name": "00-INDEX.md",
       "path": "12-Active-Memory/00-INDEX.md",
       "title": "00-INDEX",
-      "date": "2026-03-20 18:53",
+      "date": "2026-03-20 19:07",
       "links": [
         "01-VAULT-ARCHITECTURE",
-        "02-NEURO-DYNAMICS"
+        "02-FOREST-THINKING"
       ],
       "type": "12-Active-Memory"
     },
@@ -144,6 +144,16 @@
       "title": "01-VAULT-ARCHITECTURE",
       "date": "2026-03-20 18:53",
       "links": [],
+      "type": "12-Active-Memory"
+    },
+    {
+      "name": "02-forest-thinking.md",
+      "path": "12-Active-Memory/02-forest-thinking.md",
+      "title": "02-forest-thinking",
+      "date": "2026-03-20 19:07",
+      "links": [
+        "WikiLinks"
+      ],
       "type": "12-Active-Memory"
     }
   ]

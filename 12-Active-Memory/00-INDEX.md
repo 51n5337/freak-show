@@ -4,4 +4,4 @@ Welcome to the deep-layer of the freak-show. This is where transient thoughts be
 
 ## 🌀 Active Nodes
 - [[01-VAULT-ARCHITECTURE]]
-- [[02-NEURO-DYNAMICS]]
+- [[02-FOREST-THINKING]]
