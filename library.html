@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>#BZ | #KnowledgeNexus</title>
+    <link rel='stylesheet' href='90-Assets/main.css'>
+</head>
+<body class='vibe-satire'>
+    <header>
+        <h1>#KnowledgeNexus</h1>
+        <a href='vault.html' class='btn'><< BACK TO VAULT</a>
+    </header>
+    <main>
+        <section class='manifesto'>
+            <p>>> ACCESSING EXTERNAL INTELLIGENCE REPOSITORY...<br>
+            >> FILTERING NOISE. EXTRACTING SIGNAL.</p>
+        </section>
+        <div id='library-nodes' class='grid'>
+            <!-- Reading list entries injected here -->
+        </div>
+    </main>
+    <footer><div class='status'>Zy<3Be | 2026</div></footer>
+    <script>
+        async function loadLibrary() {
+            const response = await fetch('90-Assets/vault.json');
+            const data = await response.json();
+            const container = document.getElementById('library-nodes');
+            container.innerHTML = data.library.map(e => `
+                <div class='card vibe-neon'>
+                    <h3>${e.title}</h3>
+                    <p style='font-size: 0.9rem; margin-bottom: 1rem;'>${e.summary}</p>
+                    <div style='margin-bottom: 1rem;'>
+                        ${e.tags.map(t => `<span class='status' style='margin-right:0.5rem; border:1px solid var(--accent); padding:2px 5px;'>${t}</span>`).join('')}
+                    </div>
+                    <a href='${e.link}' target='_blank' class='btn'>>> VISIT SOURCE</a>
+                </div>
+            `).join('');
+        }
+        window.onload = loadLibrary;
+    </script>
+</body>
+</html>

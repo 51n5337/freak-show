@@ -37,10 +37,12 @@ function updateTerminal(msg) {
 function renderPulse(data) {
     const container = document.getElementById('pulse-stats');
     if (!container) return;
+
     const totalNodes = (data.total_logs || 0) + (data.total_research || 0);
     const allNodes = [...(data.logs || []), ...(data.research || [])];
     const totalLinks = allNodes.reduce((acc, l) => acc + (l.links ? l.links.length : 0), 0);
     const density = totalNodes > 1 ? ((totalLinks / (totalNodes * (totalNodes - 1))) * 100).toFixed(2) : 0;
+
     container.innerHTML = `
         <div class='card' style='border:none'><h3>NODES</h3><p style='color:var(--accent); font-size:1.5rem;'>${totalNodes}</p></div>
         <div class='card' style='border:none'><h3>LINKS</h3><p style='color:var(--accent); font-size:1.5rem;'>${totalLinks}</p></div>
@@ -48,10 +50,11 @@ function renderPulse(data) {
     `;
 }
 
-function renderLogs(logs, seed) {
+function renderLogs(logs, seed = Math.floor(Date.now() / 1000)) {
     const container = document.getElementById('vault-logs');
     if (!container) return;
     const cardVibes = ['vibe-flicker', 'vibe-neon', 'vibe-satire', ''];
+    
     container.innerHTML = logs.map((log, index) => {
         const cardVibe = cardVibes[(seed + index) % cardVibes.length];
         return `
@@ -65,20 +68,19 @@ function renderLogs(logs, seed) {
 }
 
 async function loadVault() {
-    const vibes = ['vibe-flicker', 'vibe-neon', 'vibe-satire'];
     const manualVibe = localStorage.getItem('vault-vibe-manual');
-    
-    // IMPROVED ENTROPY: Seed using timestamp to ensure variety
     const now = Date.now();
     const seed = Math.floor(now / 1000);
-    const entropyIndex = (now % 3); // Purely based on milliseconds (0-2)
-    const entropyVibe = vibes[entropyIndex];
+    const vibes = ['vibe-flicker', 'vibe-neon', 'vibe-satire'];
+    const scheduled = getScheduledVibe();
 
     if (manualVibe && manualVibe !== 'null') {
         setVibe(manualVibe, true);
     } else {
-        const status = document.getElementById('vault-status');
+        const entropyIndex = (now % 3);
+        const entropyVibe = vibes[entropyIndex];
         if (document.body) document.body.className = entropyVibe;
+        const status = document.getElementById('vault-status');
         if (status) status.innerText = `>> VAULT STATUS: ENTROPY SEED [${now}] | #${entropyVibe.replace('vibe-', '').toUpperCase()}`;
     }
 
@@ -100,9 +102,13 @@ async function loadVault() {
                 const cmdLine = this.value.trim();
                 const [cmd, ...args] = cmdLine.toLowerCase().split(' ');
                 this.value = '';
+                
                 updateTerminal(`<span style="color:white">${cmdLine}</span>`);
+
                 switch(cmd) {
-                    case 'ls': renderLogs(allLogs, seed); break;
+                    case 'ls':
+                        renderLogs(allLogs, seed);
+                        break;
                     case 'find':
                     case 'grep':
                         const query = args.join(' ');
@@ -123,15 +129,28 @@ async function loadVault() {
                             setVibe(args[0] ? `vibe-${args[0]}` : '', true);
                         }
                         break;
-                    case 'research': window.location.href = 'research.html'; break;
+                    case 'research':
+                        updateTerminal('ACCESSING RESEARCH VAULT...');
+                        window.location.href = 'research.html';
+                        break;
+                    case 'library':
+                        updateTerminal('ACCESSING KNOWLEDGE NEXUS...');
+                        window.location.href = 'library.html';
+                        break;
+                    case 'time':
+                        updateTerminal(`CURRENT TIME: ${new Date().toLocaleTimeString()} | SCHEDULED: #${scheduled.name}`);
+                        break;
                     case 'clear':
                         document.getElementById('terminal-output').innerHTML = '>> TERMINAL CLEARED.';
                         renderLogs(allLogs, seed);
                         break;
                     case 'help':
-                        updateTerminal(`COMMANDS: ls, find <query>, vibe --manifesto, vibe <name>, research, time, clear, help`);
+                        updateTerminal(`
+                            COMMANDS: ls, find <query>, research, library, vibe --manifesto, vibe <name>, time, clear, help
+                        `);
                         break;
-                    default: updateTerminal(`ERROR: UNKNOWN COMMAND "${cmd}".`);
+                    default:
+                        updateTerminal(`ERROR: UNKNOWN COMMAND "${cmd}".`);
                 }
             }
         });

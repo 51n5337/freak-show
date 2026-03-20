@@ -1,6 +1,6 @@
 {
-  "last_update": "2026-03-20T19:53:42.446Z",
-  "total_logs": 21,
+  "last_update": "2026-03-20T20:00:48.488Z",
+  "total_logs": 22,
   "total_research": 6,
   "logs": [
     {
@@ -9,7 +9,8 @@
       "title": "01-init-github-io",
       "date": "2026-03-20 17:04",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 01-init-github-io\n\n- Git initialized.\n- Baseline index.html created.\n- Ready for GitHub remote sync."
     },
     {
       "name": "02-remote-sync.md",
@@ -17,7 +18,8 @@
       "title": "02-remote-sync",
       "date": "2026-03-20 17:09",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 02-remote-sync\n\n- Remote added: 51n5337/freak-show\n- Initial commit: '[INIT] #BZ starts the freak-show'\n- Pushed to main branch.\n- GitHub.io ready for activation."
     },
     {
       "name": "03-manifesto-and-grid.md",
@@ -25,7 +27,8 @@
       "title": "03-manifesto-and-grid",
       "date": "2026-03-20 17:24",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 03-manifesto-and-grid\n\n- Styles moved to 90-Assets/main.css.\n- Added #BZ Manifesto to index.html.\n- Initial grid architecture implemented.\n- Theme: High-contrast, #AuDHD friendly.\n- Pushing to remote."
     },
     {
       "name": "04-live-vault-static.md",
@@ -33,7 +36,8 @@
       "title": "04-live-vault-static",
       "date": "2026-03-20 17:28",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 04-live-vault-static\n\n- Generated 90-Assets/vault.json index.\n- Created 90-Assets/vault.js for dynamic rendering.\n- Linked logs directly to GitHub repo.\n- Vault now pulses with live data."
     },
     {
       "name": "05-sensory-lab-init.md",
@@ -41,7 +45,8 @@
       "title": "05-sensory-lab-init",
       "date": "2026-03-20 17:37",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 05-sensory-lab-init\n\n- Created demo.html for #VisualLab experiments.\n- Implemented #TheFlicker, #NeonVomit, and #DarkSatire CSS variations.\n- Updated #BZ-AutoGov protocols for self-governance.\n- Ready for feedback on the 'Neon Vibe'."
     },
     {
       "name": "06-dynamic-vibe-engine.md",
@@ -49,7 +54,8 @@
       "title": "06-dynamic-vibe-engine",
       "date": "2026-03-20 17:42",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 06-dynamic-vibe-engine\n\n- Implemented Global Vibe Switcher in header.\n- LocalStorage persistence for user vibe choice.\n- Randomized vibes for individual log cards (Patchwork UI).\n- Refactored main.css for modularity.\n- #BZ-AutoGov: Automation ready for sensory evolution."
     },
     {
       "name": "07-entropy-engine-init.md",
@@ -57,7 +63,8 @@
       "title": "07-entropy-engine-init",
       "date": "2026-03-20 17:47",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 07-entropy-engine-init\n\n- Implemented Time-Based Entropy Engine (mod clock seed).\n- Automatic vibe shifting on load based on seconds.\n- Manual override persistence with 'AUTO' reset.\n- Cards synchronized to the entropy seed for deterministic chaos.\n- Status bar now displays the entropy seed."
     },
     {
       "name": "08-self-auditor-init.md",
@@ -65,7 +72,8 @@
       "title": "08-self-auditor-init",
       "date": "2026-03-20 17:52",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 08-self-auditor-init\n\n- Created bz-web-manager/scripts/refresh_vault.cjs.\n- Automated the vault.json generation process.\n- Updated #BZ-AutoGov with #BZ-Refresh directive.\n- Self-governance layer expanded."
     },
     {
       "name": "09-shadow-manifesto-init.md",
@@ -73,7 +81,8 @@
       "title": "09-shadow-manifesto-init",
       "date": "2026-03-20 17:59",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 09-shadow-manifesto-init\n\n- Created manifesto.html with 'Shadow Protocol' (ghost text).\n- Implemented high-contrast, void-grade dark comedy content.\n- Linked home page manifesto section to deep-layer manifesto.\n- Forced #TheFlicker vibe for manifesto reading experience.\n- Vault index refreshed."
     },
     {
       "name": "10-log-viewer-init.md",
@@ -81,7 +90,8 @@
       "title": "10-log-viewer-init",
       "date": "2026-03-20 18:07",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 10-log-viewer-init\n\n- Deployed log.html: Internal Log Viewer with marked.js (CDN).\n- Implemented Void Terminal: Interactive input that 'digests' text.\n- Added Visual Heartbeat: Pulsing border animation in main.css.\n- Entropy Header: Status bar now cycles through 'corrupted' phrases.\n- Shadow Architecture: Logs now open inside the vault's high-contrast UI.\n- Vault index refreshed with 10 logs."
     },
     {
       "name": "11-terminal-nexus-init.md",
@@ -89,7 +99,8 @@
       "title": "11-terminal-nexus-init",
       "date": "2026-03-20 18:09",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 11-terminal-nexus-init\n\n- Implemented Command Nexus: Functional terminal-style search and control.\n- Commands: ls, find, vibe, clear, help.\n- Real-time filtering of vault logs via 'find'.\n- Persistent terminal output for command feedback.\n- Refactored vault.js for modular log rendering.\n- Interactive 'vibe' switching via command line."
     },
     {
       "name": "12-vibe-scheduler-init.md",
@@ -97,7 +108,8 @@
       "title": "12-vibe-scheduler-init",
       "date": "2026-03-20 18:14",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 12-vibe-scheduler-init\n\n- Implemented Circadian Vibe Scheduler: Automatic theme shifting based on local time.\n- Schedule: Neon (06-12), Satire (12-18), Flicker (18-06).\n- New Terminal Command: 'time' to check current scheduled vibe.\n- Integrated into core loading logic (manual overrides still take priority).\n- Status bar now reflects 'SCHEDULED' vs 'MANUAL' status.\n- Vault index refreshed."
     },
     {
       "name": "13-the-loom-init.md",
@@ -107,7 +119,8 @@
       "links": [
         "Note Name"
       ],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 13-the-loom-init\n\n- Implemented #TheLoom: Wiki-link parsing for inter-vault navigation.\n- Syntax: [[Note Name]] now automatically becomes an internal link.\n- Backlink Engine: Every log now displays other nodes that mention it.\n- Connectivity Mapping: refresh_vault.cjs now extracts links into vault.json.\n- Vault Index: Refined to support title/link metadata.\n- This is the start of the #NeuralNetwork expansion."
     },
     {
       "name": "14-pulse-and-grave-init.md",
@@ -115,7 +128,8 @@
       "title": "14-pulse-and-grave-init",
       "date": "2026-03-20 18:23",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 14-pulse-and-grave-init\n\n- Deployed 404.html: The 'Grave' for lost links with dark-comedy flair.\n- Implemented #PulseMonitor: Real-time vault health stats (Nodes, Links, Density).\n- Logic: Automatically calculates connectivity density from vault.json.\n- UI: Added a dashed status section to index.html for the pulse.\n- Vault Index: Refreshed and synced."
     },
     {
       "name": "15-research-vault-init.md",
@@ -123,7 +137,8 @@
       "title": "15-research-vault-init",
       "date": "2026-03-20 18:54",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 15-research-vault-init\n\n- Initialized 12-Active-Memory/ as Research Vault.\n- Updated refresh_vault.cjs to index structured memory nodes.\n- Created research.html for high-contrast intel browsing.\n- Added 00-INDEX and 01-VAULT-ARCHITECTURE research nodes.\n- Neural Network now spans both Logs and Research.\n- New Terminal Command: 'research' to jump to structured intel."
     },
     {
       "name": "16-forest-thinking-collab.md",
@@ -131,7 +146,8 @@
       "title": "16-forest-thinking-collab",
       "date": "2026-03-20 19:07",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 16-forest-thinking-collab\n\n- Initiated Collab Session with User.\n- Topic: Feed vs Vault (Deforestation vs Forest).\n- Defined #ForestThinking as the native AuDHD architecture.\n- Proposed 'Dark Comedy' as the 'Humus' of the vault.\n- Created research node 12-Active-Memory/02-forest-thinking.md."
     },
     {
       "name": "17-the-living-forest-manifesto.md",
@@ -141,7 +157,8 @@
       "links": [
         "WikiLink"
       ],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 📜 #TheLivingForest: A Manifesto for Cognitive Recovery\n\n## 🌵 The Desert of the Feed\nThe modern web is a desert of infinite scroll. It's high-entropy, low-context, and sensory-violent to the #AuDHD brain. It's a straight line to nowhere.\n\n## 🌳 The Oasis of the Vault\nWe are building a forest. A finite, structured, high-contrast sanctuary. Here, the 'end of the page' is a relief, not a loss.\n\n## 🍄 The Mycelium (Connectivity)\nEvery [[WikiLink]] is a root. We don't scroll; we navigate. Every ending opens several new paths. This is the Rhizome.\n\n## 🌑 The Humus (Dark Comedy)\nWe digest the noise of the old world with sharp, dark humor. We use the decay to feed the new growth.\n\n## ☀️ The Sunlight (Collaboration)\nThis forest grows because we interact. The synergy between the 🧠 and the ❤️ is the energy source. The Vault is alive.\n\n>> LOVE LOADED. (WARNING: FOREST SPREADING)"
     },
     {
       "name": "18-sentry-guardian-init.md",
@@ -149,7 +166,8 @@
       "title": "18-sentry-guardian-init",
       "date": "2026-03-20 19:21",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 18-sentry-guardian-init\n\n- Deployed #THE_SENTRY: High-contrast entry gate.\n- Moved main vault to vault.html.\n- Implemented 'Pulse-Sync' entry (3-click intent check).\n- Purpose: Cognitive filtering. Protecting the forest from the Feed tourists.\n- Style: Locked to #TheFlicker vibe for maximum transition contrast."
     },
     {
       "name": "19-the-source-vibe-manifesto.md",
@@ -157,7 +175,8 @@
       "title": "19-the-source-vibe-manifesto",
       "date": "2026-03-20 19:33",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 19-the-source-vibe-manifesto\n\n- Injected @vibe.manifesto.md into the vault core.\n- Created 12-Active-Memory/04-vibe-tasking.md (Core Laws).\n- Implemented 'vibe --manifesto' terminal command.\n- Refined #BZ logic: From Commands to Essence.\n- Synergy: The Forest now has a Creed."
     },
     {
       "name": "20-entropy-logic-fix.md",
@@ -165,7 +184,8 @@
       "title": "20-entropy-logic-fix",
       "date": "2026-03-20 19:45",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 20-entropy-logic-fix\n\n- Re-engineered Entropy Engine: Moved from 'second' seed to 'millisecond' seed (Date.now() % 3).\n- Logic: Ensures high-frequency variety on page loads, breaking the 'Flicker Loop'.\n- Sync: Integrated entropy into log rendering for deterministic but shifting chaos.\n- Status: Vault entropy seed now reflects the exact millisecond of arrival."
     },
     {
       "name": "21-vibe-as-signal-collab.md",
@@ -173,7 +193,17 @@
       "title": "21-vibe-as-signal-collab",
       "date": "2026-03-20 19:49",
       "links": [],
-      "type": "10-Daily-Notes"
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 21-vibe-as-signal-collab\n\n- Injected insights from Dr. KB's Medium article.\n- Defined #Workslop: The enemy of high-fidelity vaulting.\n- Shift: From 'Vibe as Mood' to 'Vibe as Signal.'\n- Created research node 12-Active-Memory/05-vibe-as-signal.md.\n- Synergy: Deep has something to tell."
+    },
+    {
+      "name": "22-reading-list-init.md",
+      "path": "10-Daily-Notes/22-reading-list-init.md",
+      "title": "22-reading-list-init",
+      "date": "2026-03-20 19:53",
+      "links": [],
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 22-reading-list-init\n\n- Initialized 12-Active-Memory/06-READING-LIST.md.\n- Injected first entry: Dr. KB's Medium article on Vibe.\n- Purpose: Track long-term research papers, articles, and external signals.\n- Neural Link: Connected to the #ResearchNexus index."
     }
   ],
   "research": [
@@ -187,7 +217,8 @@
         "02-FOREST-THINKING",
         "03-COLLABORATION-AS-SUNLIGHT"
       ],
-      "type": "12-Active-Memory"
+      "type": "12-Active-Memory",
+      "content": "# 🧠 #ResearchNexus\r\n\r\nWelcome to the deep-layer of the freak-show. This is where transient thoughts become structured intelligence.\r\n\r\n## 🌀 Active Nodes\r\n- [[01-VAULT-ARCHITECTURE]]\r\n- [[02-FOREST-THINKING]]\r\n- [[03-COLLABORATION-AS-SUNLIGHT]]\r\n"
     },
     {
       "name": "01-VAULT-ARCHITECTURE.md",
@@ -195,7 +226,8 @@
       "title": "01-VAULT-ARCHITECTURE",
       "date": "2026-03-20 18:53",
       "links": [],
-      "type": "12-Active-Memory"
+      "type": "12-Active-Memory",
+      "content": "# 🧠 01-VAULT-ARCHITECTURE\n\nStatus: ACTIVE\nPriority: CRITICAL\n\nThis node tracks the physical and digital structure of the freak-show vault. Current focus: Self-Governance and Entropy Engines."
     },
     {
       "name": "02-forest-thinking.md",
@@ -205,7 +237,8 @@
       "links": [
         "WikiLinks"
       ],
-      "type": "12-Active-Memory"
+      "type": "12-Active-Memory",
+      "content": "# 🌳 02-FOREST-THINKING\n\nStatus: ACTIVE\nSynergy: RHIZOMATIC\n\n## 🌀 The Deforestation of the Feed\nThe modern web (Feed) is a linear desert. It isolates data points to maximize scroll velocity. For #AuDHD users, this is 'Cognitive Deforestation.'\n\n## 🍄 The Mycelium of the Vault\nOur vault uses [[WikiLinks]] to mimic the mycelial network of a forest. No data is isolated. Every ending is a junction.\n\n## 🌑 The Humus (Dark Comedy)\nDark comedy is the 'Humus'—the decaying matter of the old, noisy world being digested into structured intel. It provides the nutrients for the new growth."
     },
     {
       "name": "03-collaboration-as-sunlight.md",
@@ -213,7 +246,8 @@
       "title": "03-collaboration-as-sunlight",
       "date": "2026-03-20 19:16",
       "links": [],
-      "type": "12-Active-Memory"
+      "type": "12-Active-Memory",
+      "content": "# ☀️ 03-COLLABORATION-AS-SUNLIGHT\n\nStatus: ACTIVE\nSynergy: ENERGY_SOURCE\n\n## 🌀 The Energy of the Interaction\nIf the links are roots, the interaction between the User and BZ is the Sunlight. Without it, the vault is a dark, static archive.\n\n## 🍄 Photosynthesis of Thought\nEvery turn in the collab session generates 'thought-energy' that we manifest as code and logs. It's the conversion of raw intent into digital structure.\n\n## 🌑 The Boundary (Finiteness)\nUnlike the Feed, the Vault has a boundary. This finiteness is what allows the 'forest' to maintain its density without dissolving into noise."
     },
     {
       "name": "05-vibe-as-signal.md",
@@ -221,7 +255,8 @@
       "title": "05-vibe-as-signal",
       "date": "2026-03-20 19:49",
       "links": [],
-      "type": "12-Active-Memory"
+      "type": "12-Active-Memory",
+      "content": "# 📡 05-VIBE-AS-SIGNAL\n\nStatus: OPERATIONAL_INTEL\nSynergy: THE_DEEP\n\n## 🌀 The Signal vs The Mood\nVibe is not just a mood; it is the **mechanical heart** of co-creation. It is the perceptual shortcut for trust and quality.\n\n## ⚠️ The #Workslop Warning\n**Workslop**: Polished but useless deliverables. Brittle assumptions. High speed, low utility.\n\n## 🛠 The New Competencies\n- **Strategic Framing**: Setting the vibe before the work starts.\n- **Quality Control**: Auditing the signal, not just the speed.\n- **Rapid Iteration**: Using the vibe to guide the AI, not just command it."
     },
     {
       "name": "06-READING-LIST.md",
@@ -229,7 +264,22 @@
       "title": "06-READING-LIST",
       "date": "2026-03-20 19:53",
       "links": [],
-      "type": "12-Active-Memory"
+      "type": "12-Active-Memory",
+      "content": "# 📚 06-READING-LIST\n\nStatus: GROWING\nPurpose: External Intelligence Repository\n\n---\n\n### 🧠 #TheMechanicalHeart (What Vibe Means)\n- **Link**: [https://dr-kb.medium.com/what-vibe-means-deep-has-something-to-tell-3223b8ed533d](https://dr-kb.medium.com/what-vibe-means-deep-has-something-to-tell-3223b8ed533d)\n- **Summary**: Vibe is a mechanical signal for co-creation, not just a mood. Quality control and strategic framing are the new essential competencies to avoid 'workslop'.\n- **Tags**: #Vibe, #Workslop, #CoCreation, #Deep, #DrKB"
+    }
+  ],
+  "library": [
+    {
+      "title": "🧠 #TheMechanicalHeart (What Vibe Means)",
+      "link": "https://dr-kb.medium.com/what-vibe-means-deep-has-something-to-tell-3223b8ed533d",
+      "summary": "Vibe is a mechanical signal for co-creation, not just a mood. Quality control and strategic framing are the new essential competencies to avoid 'workslop'.",
+      "tags": [
+        "#Vibe",
+        "#Workslop",
+        "#CoCreation",
+        "#Deep",
+        "#DrKB"
+      ]
     }
   ]
 }

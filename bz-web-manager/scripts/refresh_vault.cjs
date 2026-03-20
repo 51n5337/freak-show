@@ -25,7 +25,8 @@ function processDir(dir, type) {
                 title: file.replace('.md', ''),
                 date: stats.mtime.toISOString().replace('T', ' ').substring(0, 16),
                 links: links,
-                type: type
+                type: type,
+                content: content // Adding raw content for specific parsing
             };
         });
 }
@@ -33,19 +34,40 @@ function processDir(dir, type) {
 try {
     const logs = processDir(notesDir, '10-Daily-Notes');
     const research = processDir(researchDir, '12-Active-Memory');
-    const allNodes = [...logs, ...research].sort((a, b) => b.date.localeCompare(a.date));
+    
+    // Parse Reading List entries
+    const readingListNode = research.find(r => r.name === '06-READING-LIST.md');
+    const readingEntries = [];
+    if (readingListNode) {
+        const sections = readingListNode.content.split('### ').slice(1);
+        sections.forEach(s => {
+            const lines = s.split('\n');
+            const title = lines[0].trim();
+            const linkMatch = s.match(/\[(.*?)\]\((.*?)\)/);
+            const summaryMatch = s.match(/- \*\*Summary\*\*: (.*)/);
+            const tagsMatch = s.match(/- \*\*Tags\*\*: (.*)/);
+            
+            readingEntries.push({
+                title: title,
+                link: linkMatch ? linkMatch[2] : '#',
+                summary: summaryMatch ? summaryMatch[1] : '',
+                tags: tagsMatch ? tagsMatch[1].split(', ') : []
+            });
+        });
+    }
 
     const vaultData = {
         last_update: new Date().toISOString(),
         total_logs: logs.length,
         total_research: research.length,
         logs: logs,
-        research: research
+        research: research,
+        library: readingEntries
     };
 
     fs.writeFileSync(outputFile, JSON.stringify(vaultData, null, 2));
-    console.log('? Research nodes integrated: ' + research.length + ' memory nodes detected.');
+    console.log('✅ Library Nexus updated: ' + readingEntries.length + ' sources mapped.');
 } catch (err) {
-    console.error('? Integration failed:', err);
+    console.error('❌ Integration failed:', err);
     process.exit(1);
 }
