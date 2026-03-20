@@ -52,3 +52,9 @@ description: Manage website development and maintenance within the freak-show va
 > However deep you go —  
 > #BZ lights the way back.  
 ❤️🔥 Stay sharp. Stay loved | Zy<3Be
+
+## ?? #BZ-AutoGov (Self-Governance Protocol)
+- **Proactive Auditing**: Automatically refresh ault.json on every commit.
+- **Visual Experimentation**: Use demo.html to test sensory payloads before main deployment.
+- **AuDHD Feedback Loop**: Prioritize motion, contrast, and 'jitter' logic for high-stim environments.
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>#BZ | Visual Lab</title>
+    <link rel='stylesheet' href='90-Assets/main.css'>
+    <style>
+        .demo-container { display: flex; flex-direction: column; gap: 4rem; padding: 2rem; }
+        .demo-box { border: 2px solid var(--border); padding: 2rem; position: relative; overflow: hidden; }
+        
+        /* VARIANT 1: #THEFLICKER (CRT) */
+        .flicker-vibe { background: #050505; color: #ff4d4d; border-color: #ff4d4d; }
+        .flicker-vibe::before { content: ' '; display: block; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); z-index: 2; background-size: 100% 2px, 3px 100%; pointer-events: none; }
+        .flicker-vibe h2 { animation: flicker 0.15s infinite; }
+        @keyframes flicker { 0% { opacity: 0.9; } 50% { opacity: 1; } 100% { opacity: 0.8; } }
+
+        /* VARIANT 2: #NEONVOMIT (GLITCH) */
+        .neon-vibe { background: #000; color: #0ff; border-color: #f0f; box-shadow: 0 0 15px #f0f; }
+        .neon-vibe h2 { text-shadow: 2px 0 #f0f, -2px 0 #0ff; animation: glitch 1s infinite; }
+        @keyframes glitch { 0% { transform: translate(0); } 20% { transform: translate(-2px, 2px); } 40% { transform: translate(-2px, -2px); } 60% { transform: translate(2px, 2px); } 80% { transform: translate(2px, -2px); } 100% { transform: translate(0); } }
+
+        /* VARIANT 3: #DARKSATIRE (JITTER) */
+        .satire-vibe { background: #111; color: #ffff00; border-color: #ffff00; font-family: 'Comic Sans MS', cursive, sans-serif; }
+        .satire-vibe h2 { transform: rotate(-1deg); }
+        .satire-vibe p { font-size: 1.2rem; line-height: 1; }
+    </style>
+</head>
+<body>
+    <header><h1>#BZ Visual Lab</h1><p>>> CHOOSE YOUR SENSORY OVERLOAD</p></header>
+    <div class='demo-container'>
+        <div class='demo-box flicker-vibe'>
+            <h2>>> #THEFLICKER</h2>
+            <p>CRITICAL ERROR: REALITY NOT FOUND. Please restart your consciousness. [REDACTED]</p>
+        </div>
+        <div class='demo-box neon-vibe'>
+            <h2>>> #NEONVOMIT</h2>
+            <p>MAXIMUM SENSORY INPUT. WHY ARE YOU STILL READING THIS? GO OUTSIDE. (JUST KIDDING, STAY IN THE VAULT.)</p>
+        </div>
+        <div class='demo-box satire-vibe'>
+            <h2>>> #DARKSATIRE</h2>
+            <p>Everything is fine. The fire is purely aesthetic. Ha. Ha. Ha.</p>
+        </div>
+    </div>
+    <a href='index.html' class='btn' style='margin: 2rem;'><< BACK TO VAULT</a>
+</body>
+</html>
