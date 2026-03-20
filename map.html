@@ -7,25 +7,34 @@
     <link rel='stylesheet' href='90-Assets/main.css'>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
-        body { background: #000; overflow: hidden; }
+        body { background: #000; overflow: hidden; margin: 0; padding: 0; border: none; }
         #map-container { width: 100vw; height: 100vh; cursor: crosshair; }
-        .node { stroke: #000; stroke-width: 1.5px; cursor: pointer; }
-        .link { stroke: #333; stroke-opacity: 0.6; stroke-width: 1px; }
+        .node { stroke: #000; stroke-width: 1.5px; cursor: pointer; transition: r 0.3s; }
+        .node:hover { r: 12; stroke: var(--accent); }
+        .link { stroke: #333; stroke-opacity: 0.4; stroke-width: 1px; }
         .label { fill: #fff; font-family: 'Courier New', monospace; font-size: 10px; pointer-events: none; opacity: 0.6; }
-        header { position: absolute; top: 0; left: 0; padding: 2rem; background: rgba(0,0,0,0.8); z-index: 10; width: 100%; border-bottom: none; }
+        header { position: absolute; top: 0; left: 0; padding: 2rem; background: rgba(0,0,0,0.8); z-index: 10; width: 100%; border-bottom: none; pointer-events: none; }
+        header * { pointer-events: auto; }
         .vibe-flicker::before { z-index: 9; }
+        .controls { position: absolute; bottom: 2rem; right: 2rem; z-index: 10; display: flex; flex-direction: column; gap: 0.5rem; }
     </style>
 </head>
 <body class='vibe-flicker'>
     <header>
         <h1>#TheCanopy</h1>
-        <div class="status">>> NEURAL WEB OF THE FREAK-SHOW</div>
+        <div class="status">>> NEURAL WEB | SCROLL TO ZOOM | DRAG TO PAN</div>
         <a href='vault.html' class='btn' style="margin-top: 1rem;"><< BACK TO VAULT</a>
     </header>
 
     <div id='map-container'></div>
 
+    <div class="controls">
+        <button class="btn" onclick="resetZoom()">>> RESET VIEW</button>
+    </div>
+
     <script>
+        let svg, g, zoom;
+
         async function loadMap() {
             const response = await fetch('90-Assets/vault.json');
             const data = await response.json();
@@ -34,23 +43,36 @@
             const width = window.innerWidth;
             const height = window.innerHeight;
 
-            const svg = d3.select("#map-container")
+            svg = d3.select("#map-container")
                 .append("svg")
                 .attr("width", width)
                 .attr("height", height);
 
-            const simulation = d3.forceSimulation(graph.nodes)
-                .force("link", d3.forceLink(graph.links).id(d => d.id).distance(100))
-                .force("charge", d3.forceManyBody().strength(-200))
-                .force("center", d3.forceCenter(width / 2, height / 2));
+            // Create a group for all graph elements to handle zooming
+            g = svg.append("g");
 
-            const link = svg.append("g")
+            // Setup Zoom and Pan
+            zoom = d3.zoom()
+                .scaleExtent([0.1, 4])
+                .on("zoom", (event) => {
+                    g.attr("transform", event.transform);
+                });
+
+            svg.call(zoom);
+
+            const simulation = d3.forceSimulation(graph.nodes)
+                .force("link", d3.forceLink(graph.links).id(d => d.id).distance(120))
+                .force("charge", d3.forceManyBody().strength(-300))
+                .force("center", d3.forceCenter(width / 2, height / 2))
+                .force("collision", d3.forceCollide().radius(50));
+
+            const link = g.append("g")
                 .selectAll("line")
                 .data(graph.links)
                 .join("line")
                 .attr("class", "link");
 
-            const node = svg.append("g")
+            const node = g.append("g")
                 .selectAll("circle")
                 .data(graph.nodes)
                 .join("circle")
@@ -70,7 +92,7 @@
                         d.fx = null; d.fy = null;
                     }));
 
-            const label = svg.append("g")
+            const label = g.append("g")
                 .selectAll("text")
                 .data(graph.nodes)
                 .join("text")
@@ -87,7 +109,7 @@
                     .attr("cx", d => d.x)
                     .attr("cy", d => d.y);
                 label
-                    .attr("x", d => d.x + 12)
+                    .attr("x", d => d.x + 14)
                     .attr("y", d => d.y + 4);
             });
 
@@ -96,7 +118,16 @@
                 if (fullNode) window.location.href = `log.html?file=${fullNode.path}`;
             });
         }
+
+        function resetZoom() {
+            svg.transition().duration(750).call(
+                zoom.transform,
+                d3.zoomIdentity
+            );
+        }
+
         window.onload = loadMap;
+        window.onresize = () => location.reload(); // Re-center on resize
     </script>
 </body>
 </html>
