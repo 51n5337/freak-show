@@ -18,6 +18,13 @@ const corruptedPhrases = [
     ">> LOVE LOADED. (CORRUPTED SECTOR)"
 ];
 
+function getScheduledVibe() {
+    const hour = new Date().getHours();
+    if (hour >= 6 && hour < 12) return { name: 'NEONVOMIT', class: 'vibe-neon' };
+    if (hour >= 12 && hour < 18) return { name: 'DARKSATIRE', class: 'vibe-satire' };
+    return { name: 'THEFLICKER', class: 'vibe-flicker' };
+}
+
 function updateTerminal(msg) {
     const output = document.getElementById('terminal-output');
     if (output) {
@@ -43,17 +50,16 @@ function renderLogs(logs, seed = Math.floor(Date.now() / 1000)) {
 }
 
 async function loadVault() {
-    const vibes = ['vibe-flicker', 'vibe-neon', 'vibe-satire'];
     const manualVibe = localStorage.getItem('vault-vibe-manual');
     const seed = Math.floor(Date.now() / 1000);
-    const entropyVibe = vibes[seed % vibes.length];
+    const scheduled = getScheduledVibe();
 
     if (manualVibe && manualVibe !== 'null') {
         setVibe(manualVibe, true);
     } else {
-        setVibe(entropyVibe, false);
-        const phrase = corruptedPhrases[seed % corruptedPhrases.length];
-        document.getElementById('vault-status').innerText = phrase;
+        // DEFAULT TO SCHEDULED VIBE
+        document.body.className = scheduled.class;
+        document.getElementById('vault-status').innerText = `>> VAULT STATUS: SCHEDULED | #${scheduled.name}`;
     }
 
     try {
@@ -93,6 +99,11 @@ async function loadVault() {
                         setVibe(v, true);
                         updateTerminal(`VIBE SWITCHED TO: ${args[0] || 'DEFAULT'}`);
                         break;
+                    case 'time':
+                    case 'date':
+                        const now = new Date();
+                        updateTerminal(`CURRENT TIME: ${now.toLocaleTimeString()} | SCHEDULED: #${scheduled.name}`);
+                        break;
                     case 'clear':
                     case 'reset':
                         document.getElementById('terminal-output').innerHTML = '>> TERMINAL CLEARED.';
@@ -104,6 +115,7 @@ async function loadVault() {
                             - <b>ls</b>: list all logs<br>
                             - <b>find &lt;query&gt;</b>: filter logs<br>
                             - <b>vibe &lt;flicker|neon|satire&gt;</b>: switch theme<br>
+                            - <b>time</b>: check circadian schedule<br>
                             - <b>clear</b>: reset view<br>
                             - <b>help</b>: show this menu
                         `);
