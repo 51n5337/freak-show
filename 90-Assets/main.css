@@ -1,14 +1,26 @@
 :root { --bg: #0b0b0b; --text: #e0e0e0; --accent: #ff4d4d; --border: #333; --font: 'Courier New', Courier, monospace; }
-body { background: var(--bg); color: var(--text); font-family: var(--font); margin: 0; padding: 2rem; line-height: 1.6; }
-header { border-bottom: 2px solid var(--border); padding-bottom: 2rem; margin-bottom: 3rem; }
+body { background: var(--bg); color: var(--text); font-family: var(--font); margin: 0; padding: 2rem; line-height: 1.6; transition: background 0.5s, color 0.5s; }
+header { border-bottom: 2px solid var(--border); padding-bottom: 2rem; margin-bottom: 3rem; display: flex; justify-content: space-between; align-items: flex-start; }
 h1 { font-size: 2.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin: 0; }
-.manifesto { max-width: 800px; border-left: 4px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 3rem; }
-.card { border: 1px solid var(--border); padding: 1.5rem; transition: border-color 0.3s; }
-.card:hover { border-color: var(--accent); }
 .status { font-size: 0.8rem; text-transform: uppercase; opacity: 0.6; }
-.log-entry { border-left: 2px solid var(--border); }
-.log-entry:hover { border-left-color: var(--accent); }
-.btn { display: inline-block; margin-top: 1rem; color: var(--accent); text-decoration: none; font-size: 0.8rem; border: 1px solid var(--accent); padding: 5px 10px; transition: all 0.3s; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+.card { border: 1px solid var(--border); padding: 1.5rem; position: relative; overflow: hidden; background: rgba(255,255,255,0.02); }
+.btn { display: inline-block; margin-top: 1rem; color: var(--accent); text-decoration: none; font-size: 0.8rem; border: 1px solid var(--accent); padding: 5px 10px; transition: all 0.3s; cursor: pointer; background: transparent; }
 .btn:hover { background: var(--accent); color: var(--bg); }
-#vault-logs { margin-top: 2rem; }
+
+/* VIBE: #THEFLICKER */
+.vibe-flicker { --bg: #050505; --text: #ff4d4d; --accent: #ff4d4d; --border: #600; }
+.vibe-flicker::before { content: ' '; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); z-index: 9999; background-size: 100% 2px, 3px 100%; pointer-events: none; }
+.vibe-flicker h1, .vibe-flicker h2 { animation: flicker 0.15s infinite; }
+
+/* VIBE: #NEONVOMIT */
+.vibe-neon { --bg: #000; --text: #0ff; --accent: #f0f; --border: #0ff; }
+.vibe-neon .card { box-shadow: 0 0 10px var(--accent); }
+.vibe-neon h1, .vibe-neon h2 { text-shadow: 2px 0 #f0f, -2px 0 #0ff; animation: glitch 1s infinite; }
+
+/* VIBE: #DARKSATIRE */
+.vibe-satire { --bg: #111; --text: #ffff00; --accent: #ffff00; --border: #ffff00; }
+.vibe-satire h1, .vibe-satire .card { transform: rotate(-0.5deg); }
+
+@keyframes flicker { 0% { opacity: 0.9; } 50% { opacity: 1; } 100% { opacity: 0.8; } }
+@keyframes glitch { 0% { transform: translate(0); } 20% { transform: translate(-2px, 2px); } 40% { transform: translate(-2px, -2px); } 60% { transform: translate(2px, 2px); } 80% { transform: translate(2px, -2px); } 100% { transform: translate(0); } }
