@@ -43,44 +43,47 @@
     <script>
         async function loadLog() {
             const params = new URLSearchParams(window.location.search);
-            const fileName = params.get('file');
+            const filePath = params.get('file'); // Now expects full path e.g. 10-Daily-Notes/file.md
             const savedVibe = localStorage.getItem('vault-vibe-manual') || 'vibe-flicker';
             document.body.className = savedVibe;
 
-            if (!fileName) {
+            if (!filePath) {
                 document.getElementById('log-content').innerHTML = "<h1>ERROR: NO FILE SPECIFIED.</h1>";
                 return;
             }
 
             try {
                 // 1. Fetch File
-                const response = await fetch(`10-Daily-Notes/${fileName}`);
+                const response = await fetch(`${filePath}`);
                 if (!response.ok) throw new Error("File not found");
                 let text = await response.text();
                 
-                // 2. Parse [[WikiLinks]]
-                text = text.replace(/\[\[(.*?)\]\]/g, (match, p1) => {
-                    // Normalize link (find file matching title)
-                    return `<a href="log.html?file=${p1}.md" class="wikilink">${p1}</a>`;
-                });
-
-                document.getElementById('log-title').innerText = fileName.replace('.md', '').toUpperCase();
-                document.getElementById('log-meta').innerText = `>> SOURCE: ${fileName} | VIBE: ${savedVibe.toUpperCase()}`;
-                document.getElementById('log-content').innerHTML = marked.parse(text);
-
-                // 3. Handle Backlinks
+                // 2. Fetch Vault Data for link resolution
                 const vaultRes = await fetch('90-Assets/vault.json');
                 const vaultData = await vaultRes.json();
-                const currentTitle = fileName.replace('.md', '');
-                
-                const mentions = vaultData.logs.filter(l => l.links.includes(currentTitle) && l.name !== fileName);
+                const allNodes = [...vaultData.logs, ...vaultData.research];
+
+                // 3. Parse [[WikiLinks]]
+                text = text.replace(/\[\[(.*?)\]\]/g, (match, p1) => {
+                    const node = allNodes.find(n => n.title === p1);
+                    if (node) return `<a href="log.html?file=${node.path}" class="wikilink">${p1}</a>`;
+                    return `<span class="status" style="color:#600">[${p1}]</span>`;
+                });
+
+                document.getElementById('log-title').innerText = filePath.split('/').pop().replace('.md', '').toUpperCase();
+                document.getElementById('log-meta').innerText = `>> SOURCE: ${filePath} | VIBE: ${savedVibe.toUpperCase()}`;
+                document.getElementById('log-content').innerHTML = marked.parse(text);
+
+                // 4. Handle Backlinks
+                const currentTitle = filePath.split('/').pop().replace('.md', '');
+                const mentions = allNodes.filter(l => l.links.includes(currentTitle) && !filePath.includes(l.name));
                 const list = document.getElementById('backlinks-list');
                 
                 if (mentions.length > 0) {
                     list.innerHTML = mentions.map(m => `
                         <div class='card' style='padding: 0.5rem;'>
                             <h3>${m.title}</h3>
-                            <a href='log.html?file=${m.name}' class='btn'>>> JUMP</a>
+                            <a href='log.html?file=${m.path}' class='btn'>>> JUMP</a>
                         </div>
                     `).join('');
                 } else {
@@ -88,7 +91,7 @@
                 }
 
             } catch (e) {
-                document.getElementById('log-content').innerHTML = `<h1>ERROR: FAILED TO LOAD ${fileName}</h1><p>${e.message}</p>`;
+                document.getElementById('log-content').innerHTML = `<h1>ERROR: FAILED TO LOAD ${filePath}</h1><p>${e.message}</p>`;
             }
         }
         window.onload = loadLog;

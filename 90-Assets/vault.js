@@ -38,9 +38,10 @@ function renderPulse(data) {
     const container = document.getElementById('pulse-stats');
     if (!container) return;
 
-    const totalNodes = data.total_logs;
-    const totalLinks = data.logs.reduce((acc, l) => acc + l.links.length, 0);
-    const density = totalNodes > 0 ? ((totalLinks / (totalNodes * (totalNodes - 1))) * 100).toFixed(2) : 0;
+    const totalNodes = data.total_logs + data.total_research;
+    const allNodes = [...data.logs, ...data.research];
+    const totalLinks = allNodes.reduce((acc, l) => acc + l.links.length, 0);
+    const density = totalNodes > 1 ? ((totalLinks / (totalNodes * (totalNodes - 1))) * 100).toFixed(2) : 0;
 
     container.innerHTML = `
         <div class='card' style='border:none'><h3>NODES</h3><p style='color:var(--accent); font-size:1.5rem;'>${totalNodes}</p></div>
@@ -60,7 +61,7 @@ function renderLogs(logs, seed = Math.floor(Date.now() / 1000)) {
             <div class='card ${cardVibe}'>
                 <div class='status'>${log.date}</div>
                 <h3>${log.title}</h3>
-                <a href='log.html?file=${log.name}' class='btn'>>> OPEN LOG</a>
+                <a href='log.html?file=${log.path}' class='btn'>>> OPEN LOG</a>
             </div>
         `;
     }).join('');
@@ -87,7 +88,6 @@ async function loadVault() {
         renderPulse(data);
     } catch (e) {
         console.error("Vault index load failed.", e);
-        updateTerminal("ERROR: FAILED TO FETCH VAULT INDEX.");
     }
 
     // VOID TERMINAL LOGIC
@@ -118,6 +118,10 @@ async function loadVault() {
                         setVibe(v, true);
                         updateTerminal(`VIBE SWITCHED TO: ${args[0] || 'DEFAULT'}`);
                         break;
+                    case 'research':
+                        updateTerminal('ACCESSING RESEARCH VAULT...');
+                        window.location.href = 'research.html';
+                        break;
                     case 'time':
                         const now = new Date();
                         updateTerminal(`CURRENT TIME: ${now.toLocaleTimeString()} | SCHEDULED: #${scheduled.name}`);
@@ -129,16 +133,17 @@ async function loadVault() {
                     case 'help':
                         updateTerminal(`
                             COMMANDS:<br>
-                            - <b>ls</b>: list all logs<br>
+                            - <b>ls</b>: list logs<br>
                             - <b>find &lt;query&gt;</b>: filter logs<br>
+                            - <b>research</b>: enter research vault<br>
                             - <b>vibe &lt;flicker|neon|satire&gt;</b>: switch theme<br>
-                            - <b>time</b>: check circadian schedule<br>
-                            - <b>clear</b>: reset view<br>
+                            - <b>time</b>: check schedule<br>
+                            - <b>clear</b>: reset<br>
                             - <b>help</b>: show this menu
                         `);
                         break;
                     default:
-                        updateTerminal(`ERROR: UNKNOWN COMMAND "${cmd}". TRY "HELP".`);
+                        updateTerminal(`ERROR: UNKNOWN COMMAND "${cmd}".`);
                 }
             }
         });

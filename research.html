@@ -26,4 +26,15 @@
             const response = await fetch('90-Assets/vault.json');
             const data = await response.json();
             const container = document.getElementById('research-nodes');
-            container.innerHTML = data.research.map(r => \
+            container.innerHTML = data.research.map(r => `
+                <div class='card vibe-satire'>
+                    <div class='status'>${r.date}</div>
+                    <h3>${r.title}</h3>
+                    <a href='log.html?file=${r.path}' class='btn'>>> ACCESS NODE</a>
+                </div>
+            `).join('');
+        }
+        window.onload = loadResearch;
+    </script>
+</body>
+</html>
