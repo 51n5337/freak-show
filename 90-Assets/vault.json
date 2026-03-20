@@ -1,7 +1,7 @@
 {
-  "last_update": "2026-03-20T19:49:49.982Z",
-  "total_logs": 20,
-  "total_research": 5,
+  "last_update": "2026-03-20T19:53:42.446Z",
+  "total_logs": 21,
+  "total_research": 6,
   "logs": [
     {
       "name": "01-init-github-io.md",
@@ -166,6 +166,14 @@
       "date": "2026-03-20 19:45",
       "links": [],
       "type": "10-Daily-Notes"
+    },
+    {
+      "name": "21-vibe-as-signal-collab.md",
+      "path": "10-Daily-Notes/21-vibe-as-signal-collab.md",
+      "title": "21-vibe-as-signal-collab",
+      "date": "2026-03-20 19:49",
+      "links": [],
+      "type": "10-Daily-Notes"
     }
   ],
   "research": [
@@ -173,7 +181,7 @@
       "name": "00-INDEX.md",
       "path": "12-Active-Memory/00-INDEX.md",
       "title": "00-INDEX",
-      "date": "2026-03-20 19:49",
+      "date": "2026-03-20 19:53",
       "links": [
         "01-VAULT-ARCHITECTURE",
         "02-FOREST-THINKING",
@@ -212,6 +220,14 @@
       "path": "12-Active-Memory/05-vibe-as-signal.md",
       "title": "05-vibe-as-signal",
       "date": "2026-03-20 19:49",
+      "links": [],
+      "type": "12-Active-Memory"
+    },
+    {
+      "name": "06-READING-LIST.md",
+      "path": "12-Active-Memory/06-READING-LIST.md",
+      "title": "06-READING-LIST",
+      "date": "2026-03-20 19:53",
       "links": [],
       "type": "12-Active-Memory"
     }
