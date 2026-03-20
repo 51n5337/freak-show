@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>#BZ | #ResearchVault</title>
+    <link rel='stylesheet' href='90-Assets/main.css'>
+</head>
+<body class='vibe-neon'>
+    <header>
+        <h1>#ResearchVault</h1>
+        <a href='index.html' class='btn'><< BACK TO VAULT</a>
+    </header>
+    <main>
+        <section class='manifesto'>
+            <p>>> ACCESSING STRUCTURED INTELLIGENCE LAYER...<br>
+            >> SOURCE: 12-ACTIVE-MEMORY/</p>
+        </section>
+        <div id='research-nodes' class='grid'>
+            <!-- Research nodes injected here -->
+        </div>
+    </main>
+    <footer><div class='status'>Zy<3Be | 2026</div></footer>
+    <script>
+        async function loadResearch() {
+            const response = await fetch('90-Assets/vault.json');
+            const data = await response.json();
+            const container = document.getElementById('research-nodes');
+            container.innerHTML = data.research.map(r => \

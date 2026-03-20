@@ -1,99 +1,142 @@
 {
-  "last_update": "2026-03-20T18:23:23.437Z",
-  "total_logs": 13,
+  "last_update": "2026-03-20T18:53:09.952Z",
+  "total_logs": 14,
+  "total_research": 2,
   "logs": [
     {
+      "name": "01-init-github-io.md",
+      "path": "10-Daily-Notes/01-init-github-io.md",
+      "title": "01-init-github-io",
+      "date": "2026-03-20 17:04",
+      "links": [],
+      "type": "10-Daily-Notes"
+    },
+    {
+      "name": "02-remote-sync.md",
+      "path": "10-Daily-Notes/02-remote-sync.md",
+      "title": "02-remote-sync",
+      "date": "2026-03-20 17:09",
+      "links": [],
+      "type": "10-Daily-Notes"
+    },
+    {
+      "name": "03-manifesto-and-grid.md",
+      "path": "10-Daily-Notes/03-manifesto-and-grid.md",
+      "title": "03-manifesto-and-grid",
+      "date": "2026-03-20 17:24",
+      "links": [],
+      "type": "10-Daily-Notes"
+    },
+    {
+      "name": "04-live-vault-static.md",
+      "path": "10-Daily-Notes/04-live-vault-static.md",
+      "title": "04-live-vault-static",
+      "date": "2026-03-20 17:28",
+      "links": [],
+      "type": "10-Daily-Notes"
+    },
+    {
+      "name": "05-sensory-lab-init.md",
+      "path": "10-Daily-Notes/05-sensory-lab-init.md",
+      "title": "05-sensory-lab-init",
+      "date": "2026-03-20 17:37",
+      "links": [],
+      "type": "10-Daily-Notes"
+    },
+    {
+      "name": "06-dynamic-vibe-engine.md",
+      "path": "10-Daily-Notes/06-dynamic-vibe-engine.md",
+      "title": "06-dynamic-vibe-engine",
+      "date": "2026-03-20 17:42",
+      "links": [],
+      "type": "10-Daily-Notes"
+    },
+    {
+      "name": "07-entropy-engine-init.md",
+      "path": "10-Daily-Notes/07-entropy-engine-init.md",
+      "title": "07-entropy-engine-init",
+      "date": "2026-03-20 17:47",
+      "links": [],
+      "type": "10-Daily-Notes"
+    },
+    {
+      "name": "08-self-auditor-init.md",
+      "path": "10-Daily-Notes/08-self-auditor-init.md",
+      "title": "08-self-auditor-init",
+      "date": "2026-03-20 17:52",
+      "links": [],
+      "type": "10-Daily-Notes"
+    },
+    {
+      "name": "09-shadow-manifesto-init.md",
+      "path": "10-Daily-Notes/09-shadow-manifesto-init.md",
+      "title": "09-shadow-manifesto-init",
+      "date": "2026-03-20 17:59",
+      "links": [],
+      "type": "10-Daily-Notes"
+    },
+    {
+      "name": "10-log-viewer-init.md",
+      "path": "10-Daily-Notes/10-log-viewer-init.md",
+      "title": "10-log-viewer-init",
+      "date": "2026-03-20 18:07",
+      "links": [],
+      "type": "10-Daily-Notes"
+    },
+    {
+      "name": "11-terminal-nexus-init.md",
+      "path": "10-Daily-Notes/11-terminal-nexus-init.md",
+      "title": "11-terminal-nexus-init",
+      "date": "2026-03-20 18:09",
+      "links": [],
+      "type": "10-Daily-Notes"
+    },
+    {
+      "name": "12-vibe-scheduler-init.md",
+      "path": "10-Daily-Notes/12-vibe-scheduler-init.md",
+      "title": "12-vibe-scheduler-init",
+      "date": "2026-03-20 18:14",
+      "links": [],
+      "type": "10-Daily-Notes"
+    },
+    {
       "name": "13-the-loom-init.md",
+      "path": "10-Daily-Notes/13-the-loom-init.md",
       "title": "13-the-loom-init",
       "date": "2026-03-20 18:17",
       "links": [
         "Note Name"
       ],
-      "size": 419
+      "type": "10-Daily-Notes"
     },
     {
-      "name": "12-vibe-scheduler-init.md",
-      "title": "12-vibe-scheduler-init",
-      "date": "2026-03-20 18:14",
+      "name": "14-pulse-and-grave-init.md",
+      "path": "10-Daily-Notes/14-pulse-and-grave-init.md",
+      "title": "14-pulse-and-grave-init",
+      "date": "2026-03-20 18:23",
       "links": [],
-      "size": 399
+      "type": "10-Daily-Notes"
+    }
+  ],
+  "research": [
+    {
+      "name": "00-INDEX.md",
+      "path": "12-Active-Memory/00-INDEX.md",
+      "title": "00-INDEX",
+      "date": "2026-03-20 18:53",
+      "links": [
+        "01-VAULT-ARCHITECTURE",
+        "02-NEURO-DYNAMICS"
+      ],
+      "type": "12-Active-Memory"
     },
     {
-      "name": "11-terminal-nexus-init.md",
-      "title": "11-terminal-nexus-init",
-      "date": "2026-03-20 18:09",
+      "name": "01-VAULT-ARCHITECTURE.md",
+      "path": "12-Active-Memory/01-VAULT-ARCHITECTURE.md",
+      "title": "01-VAULT-ARCHITECTURE",
+      "date": "2026-03-20 18:53",
       "links": [],
-      "size": 343
-    },
-    {
-      "name": "10-log-viewer-init.md",
-      "title": "10-log-viewer-init",
-      "date": "2026-03-20 18:07",
-      "links": [],
-      "size": 402
-    },
-    {
-      "name": "09-shadow-manifesto-init.md",
-      "title": "09-shadow-manifesto-init",
-      "date": "2026-03-20 17:59",
-      "links": [],
-      "size": 302
-    },
-    {
-      "name": "08-self-auditor-init.md",
-      "title": "08-self-auditor-init",
-      "date": "2026-03-20 17:52",
-      "links": [],
-      "size": 211
-    },
-    {
-      "name": "07-entropy-engine-init.md",
-      "title": "07-entropy-engine-init",
-      "date": "2026-03-20 17:47",
-      "links": [],
-      "size": 299
-    },
-    {
-      "name": "06-dynamic-vibe-engine.md",
-      "title": "06-dynamic-vibe-engine",
-      "date": "2026-03-20 17:42",
-      "links": [],
-      "size": 278
-    },
-    {
-      "name": "05-sensory-lab-init.md",
-      "title": "05-sensory-lab-init",
-      "date": "2026-03-20 17:37",
-      "links": [],
-      "size": 240
-    },
-    {
-      "name": "04-live-vault-static.md",
-      "title": "04-live-vault-static",
-      "date": "2026-03-20 17:28",
-      "links": [],
-      "size": 194
-    },
-    {
-      "name": "03-manifesto-and-grid.md",
-      "title": "03-manifesto-and-grid",
-      "date": "2026-03-20 17:24",
-      "links": [],
-      "size": 207
-    },
-    {
-      "name": "02-remote-sync.md",
-      "title": "02-remote-sync",
-      "date": "2026-03-20 17:09",
-      "links": [],
-      "size": 169
-    },
-    {
-      "name": "01-init-github-io.md",
-      "title": "01-init-github-io",
-      "date": "2026-03-20 17:04",
-      "links": [],
-      "size": 107
+      "type": "12-Active-Memory"
     }
   ]
 }
