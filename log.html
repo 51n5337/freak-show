@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>#BZ | Log View</title>
+    <link rel='stylesheet' href='90-Assets/main.css'>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        .log-container { max-width: 900px; margin: 4rem auto; padding: 2rem; border: 1px solid var(--border); background: rgba(255,255,255,0.01); }
+        .log-content { line-height: 1.8; }
+        .log-content h1, .log-content h2 { color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-top: 2rem; }
+        .log-content code { background: rgba(255,255,255,0.05); padding: 2px 5px; color: var(--accent); }
+        .log-content pre { background: #000; padding: 1rem; border: 1px solid var(--border); overflow-x: auto; }
+        .log-header { margin-bottom: 2rem; border-bottom: 2px solid var(--accent); padding-bottom: 1rem; }
+    </style>
+</head>
+<body class='vibe-flicker'>
+    <header>
+        <h1 id="log-title">LOG_VIEWER</h1>
+        <a href='index.html' class='btn'><< BACK TO VAULT</a>
+    </header>
+
+    <main class='log-container'>
+        <div class="log-header">
+            <div id="log-meta" class="status">>> LOADING DATA...</div>
+        </div>
+        <div id="log-content" class="log-content">
+            <!-- Markdown rendered here -->
+        </div>
+    </main>
+
+    <footer>
+        <div class='status'>Stay sharp. Stay loved | Zy<3Be</div>
+    </footer>
+
+    <script>
+        async function loadLog() {
+            const params = new URLSearchParams(window.location.search);
+            const fileName = params.get('file');
+            const savedVibe = localStorage.getItem('vault-vibe-manual') || 'vibe-flicker';
+            document.body.className = savedVibe;
+
+            if (!fileName) {
+                document.getElementById('log-content').innerHTML = "<h1>ERROR: NO FILE SPECIFIED.</h1>";
+                return;
+            }
+
+            try {
+                const response = await fetch(`10-Daily-Notes/${fileName}`);
+                if (!response.ok) throw new Error("File not found");
+                const text = await response.text();
+                
+                document.getElementById('log-title').innerText = fileName.replace('.md', '').toUpperCase();
+                document.getElementById('log-meta').innerText = `>> SOURCE: ${fileName} | VIBE: ${savedVibe.toUpperCase()}`;
+                document.getElementById('log-content').innerHTML = marked.parse(text);
+            } catch (e) {
+                document.getElementById('log-content').innerHTML = `<h1>ERROR: FAILED TO LOAD ${fileName}</h1><p>${e.message}</p>`;
+            }
+        }
+        window.onload = loadLog;
+    </script>
+</body>
+</html>

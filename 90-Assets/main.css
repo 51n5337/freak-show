@@ -1,12 +1,32 @@
 :root { --bg: #0b0b0b; --text: #e0e0e0; --accent: #ff4d4d; --border: #333; --font: 'Courier New', Courier, monospace; }
-body { background: var(--bg); color: var(--text); font-family: var(--font); margin: 0; padding: 2rem; line-height: 1.6; transition: background 0.5s, color 0.5s; }
-header { border-bottom: 2px solid var(--border); padding-bottom: 2rem; margin-bottom: 3rem; display: flex; justify-content: space-between; align-items: flex-start; }
+body { 
+    background: var(--bg); color: var(--text); font-family: var(--font); margin: 0; padding: 2rem; line-height: 1.6; 
+    transition: background 0.5s, color 0.5s;
+    border: 5px solid var(--border);
+    min-height: 100vh;
+    box-sizing: border-box;
+    animation: heartbeat 5s infinite;
+}
+
+@keyframes heartbeat {
+    0% { border-color: var(--border); }
+    50% { border-color: #500; }
+    100% { border-color: var(--border); }
+}
+
+header { border-bottom: 2px solid var(--border); padding-bottom: 2rem; margin-bottom: 3rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; }
 h1 { font-size: 2.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); margin: 0; }
 .status { font-size: 0.8rem; text-transform: uppercase; opacity: 0.6; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
-.card { border: 1px solid var(--border); padding: 1.5rem; position: relative; overflow: hidden; background: rgba(255,255,255,0.02); }
+.card { border: 1px solid var(--border); padding: 1.5rem; position: relative; overflow: hidden; background: rgba(255,255,255,0.02); transition: all 0.3s; }
+.card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
 .btn { display: inline-block; margin-top: 1rem; color: var(--accent); text-decoration: none; font-size: 0.8rem; border: 1px solid var(--accent); padding: 5px 10px; transition: all 0.3s; cursor: pointer; background: transparent; }
 .btn:hover { background: var(--accent); color: var(--bg); }
+
+/* VOID TERMINAL */
+.void-terminal { margin-top: 4rem; border: 1px solid var(--border); padding: 1rem; background: #000; }
+.void-input { background: transparent; border: none; color: var(--accent); width: 100%; font-family: inherit; font-size: 1rem; outline: none; }
+.void-prompt { color: var(--accent); margin-right: 0.5rem; }
 
 /* VIBE: #THEFLICKER */
 .vibe-flicker { --bg: #050505; --text: #ff4d4d; --accent: #ff4d4d; --border: #600; }
@@ -24,3 +44,7 @@ h1 { font-size: 2.5rem; letter-spacing: 0.3em; text-transform: uppercase; color:
 
 @keyframes flicker { 0% { opacity: 0.9; } 50% { opacity: 1; } 100% { opacity: 0.8; } }
 @keyframes glitch { 0% { transform: translate(0); } 20% { transform: translate(-2px, 2px); } 40% { transform: translate(-2px, -2px); } 60% { transform: translate(2px, 2px); } 80% { transform: translate(2px, -2px); } 100% { transform: translate(0); } }
+
+.manifesto { max-width: 800px; border-left: 4px solid var(--accent); padding-left: 1.5rem; margin: 2rem 0; font-style: italic; }
+section { margin-top: 4rem; }
+h2 { text-transform: uppercase; letter-spacing: 0.2em; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }

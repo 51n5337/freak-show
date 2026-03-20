@@ -6,11 +6,19 @@ function setVibe(vibeClass, isManual = true) {
     }
 }
 
+const corruptedPhrases = [
+    ">> VAULT STATUS: OPERATIONAL | #BZ ACTIVE",
+    ">> ERROR: REALITY_SECTOR_NOT_FOUND",
+    ">> WARNING: HEARTBEAT IRREGULAR",
+    ">> SYNERGY_LEVEL: CRITICAL",
+    ">> SYSTEM: EVERYTHING IS FINE (HA HA)",
+    ">> [REDACTED] IS WATCHING",
+    ">> LOVE LOADED. (CORRUPTED SECTOR)"
+];
+
 async function loadVault() {
     const vibes = ['vibe-flicker', 'vibe-neon', 'vibe-satire'];
     const manualVibe = localStorage.getItem('vault-vibe-manual');
-    
-    // THE ENTROPY ENGINE: Seeded by current second
     const seed = Math.floor(Date.now() / 1000);
     const entropyVibe = vibes[seed % vibes.length];
 
@@ -18,7 +26,8 @@ async function loadVault() {
         setVibe(manualVibe, true);
     } else {
         setVibe(entropyVibe, false);
-        document.getElementById('vault-status').innerText = '>> VAULT STATUS: ENTROPY SEED [' + seed + '] | ' + entropyVibe.replace('vibe-', '').toUpperCase();
+        const phrase = corruptedPhrases[seed % corruptedPhrases.length];
+        document.getElementById('vault-status').innerText = phrase;
     }
 
     try {
@@ -34,12 +43,29 @@ async function loadVault() {
                 <div class='card ${cardVibe}'>
                     <div class='status'>${log.date}</div>
                     <h3>${log.name.replace('.md', '')}</h3>
-                    <a href='https://github.com/51n5337/freak-show/blob/main/10-Daily-Notes/${log.name}' target='_blank' class='btn'>>> VIEW RAW</a>
+                    <a href='log.html?file=${log.name}' class='btn'>>> OPEN LOG</a>
                 </div>
             `;
         }).join('');
     } catch (e) {
         console.error("Vault index load failed.", e);
+    }
+
+    // VOID TERMINAL LOGIC
+    const voidInput = document.getElementById('void-input');
+    if (voidInput) {
+        voidInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const val = this.value;
+                console.log("VOID DIGESTED:", val);
+                this.value = '';
+                const prompt = document.querySelector('.void-prompt');
+                prompt.innerText = '>> DIGESTING...';
+                setTimeout(() => {
+                    prompt.innerText = '>> FEED THE VOID:';
+                }, 1000);
+            }
+        });
     }
 }
 
