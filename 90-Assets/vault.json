@@ -1,7 +1,7 @@
 {
-  "last_update": "2026-03-20T19:11:18.124Z",
-  "total_logs": 16,
-  "total_research": 3,
+  "last_update": "2026-03-20T19:16:04.133Z",
+  "total_logs": 17,
+  "total_research": 4,
   "logs": [
     {
       "name": "01-init-github-io.md",
@@ -132,6 +132,16 @@
       "date": "2026-03-20 19:07",
       "links": [],
       "type": "10-Daily-Notes"
+    },
+    {
+      "name": "17-the-living-forest-manifesto.md",
+      "path": "10-Daily-Notes/17-the-living-forest-manifesto.md",
+      "title": "17-the-living-forest-manifesto",
+      "date": "2026-03-20 19:16",
+      "links": [
+        "WikiLink"
+      ],
+      "type": "10-Daily-Notes"
     }
   ],
   "research": [
@@ -139,10 +149,11 @@
       "name": "00-INDEX.md",
       "path": "12-Active-Memory/00-INDEX.md",
       "title": "00-INDEX",
-      "date": "2026-03-20 19:07",
+      "date": "2026-03-20 19:16",
       "links": [
         "01-VAULT-ARCHITECTURE",
-        "02-FOREST-THINKING"
+        "02-FOREST-THINKING",
+        "03-COLLABORATION-AS-SUNLIGHT"
       ],
       "type": "12-Active-Memory"
     },
@@ -162,6 +173,14 @@
       "links": [
         "WikiLinks"
       ],
+      "type": "12-Active-Memory"
+    },
+    {
+      "name": "03-collaboration-as-sunlight.md",
+      "path": "12-Active-Memory/03-collaboration-as-sunlight.md",
+      "title": "03-collaboration-as-sunlight",
+      "date": "2026-03-20 19:16",
+      "links": [],
       "type": "12-Active-Memory"
     }
   ]
