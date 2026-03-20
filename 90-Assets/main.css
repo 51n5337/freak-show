@@ -7,3 +7,8 @@ h1 { font-size: 2.5rem; letter-spacing: 0.3em; text-transform: uppercase; color:
 .card { border: 1px solid var(--border); padding: 1.5rem; transition: border-color 0.3s; }
 .card:hover { border-color: var(--accent); }
 .status { font-size: 0.8rem; text-transform: uppercase; opacity: 0.6; }
+.log-entry { border-left: 2px solid var(--border); }
+.log-entry:hover { border-left-color: var(--accent); }
+.btn { display: inline-block; margin-top: 1rem; color: var(--accent); text-decoration: none; font-size: 0.8rem; border: 1px solid var(--accent); padding: 5px 10px; transition: all 0.3s; }
+.btn:hover { background: var(--accent); color: var(--bg); }
+#vault-logs { margin-top: 2rem; }
