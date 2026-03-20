@@ -1,10 +1,11 @@
 let allLogs = [];
 
 function setVibe(vibeClass, isManual = true) {
-    document.body.className = vibeClass;
-    if (isManual) {
+    if (document.body) document.body.className = vibeClass;
+    const status = document.getElementById('vault-status');
+    if (isManual && status) {
         localStorage.setItem('vault-vibe-manual', vibeClass);
-        document.getElementById('vault-status').innerText = '>> VAULT STATUS: MANUAL OVERRIDE | ' + (vibeClass || 'CLEAR').toUpperCase();
+        status.innerText = '>> VAULT STATUS: MANUAL OVERRIDE | ' + (vibeClass || 'CLEAR').toUpperCase();
     }
 }
 
@@ -33,8 +34,24 @@ function updateTerminal(msg) {
     }
 }
 
+function renderPulse(data) {
+    const container = document.getElementById('pulse-stats');
+    if (!container) return;
+
+    const totalNodes = data.total_logs;
+    const totalLinks = data.logs.reduce((acc, l) => acc + l.links.length, 0);
+    const density = totalNodes > 0 ? ((totalLinks / (totalNodes * (totalNodes - 1))) * 100).toFixed(2) : 0;
+
+    container.innerHTML = `
+        <div class='card' style='border:none'><h3>NODES</h3><p style='color:var(--accent); font-size:1.5rem;'>${totalNodes}</p></div>
+        <div class='card' style='border:none'><h3>LINKS</h3><p style='color:var(--accent); font-size:1.5rem;'>${totalLinks}</p></div>
+        <div class='card' style='border:none'><h3>DENSITY</h3><p style='color:var(--accent); font-size:1.5rem;'>${density}%</p></div>
+    `;
+}
+
 function renderLogs(logs, seed = Math.floor(Date.now() / 1000)) {
     const container = document.getElementById('vault-logs');
+    if (!container) return;
     const cardVibes = ['vibe-flicker', 'vibe-neon', 'vibe-satire', ''];
     
     container.innerHTML = logs.map((log, index) => {
@@ -57,8 +74,9 @@ async function loadVault() {
     if (manualVibe && manualVibe !== 'null') {
         setVibe(manualVibe, true);
     } else {
-        document.body.className = scheduled.class;
-        document.getElementById('vault-status').innerText = `>> VAULT STATUS: SCHEDULED | #${scheduled.name}`;
+        if (document.body) document.body.className = scheduled.class;
+        const status = document.getElementById('vault-status');
+        if (status) status.innerText = `>> VAULT STATUS: SCHEDULED | #${scheduled.name}`;
     }
 
     try {
@@ -66,6 +84,7 @@ async function loadVault() {
         const data = await response.json();
         allLogs = data.logs;
         renderLogs(allLogs, seed);
+        renderPulse(data);
     } catch (e) {
         console.error("Vault index load failed.", e);
         updateTerminal("ERROR: FAILED TO FETCH VAULT INDEX.");
