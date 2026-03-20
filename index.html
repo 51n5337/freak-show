@@ -9,17 +9,13 @@
 <body>
     <header>
         <h1>freak-show</h1>
-                <div class='vibe-controls'>
+        <div class='vibe-controls'>
             <button class='btn' onclick='setVibe("vibe-flicker")'>FLICKER</button>
             <button class='btn' onclick='setVibe("vibe-neon")'>NEON</button>
             <button class='btn' onclick='setVibe("vibe-satire")'>SATIRE</button>
-            <button class='btn' onclick='setVibe("")'>CLEAR</button>
-        </div><div class='status' id='vault-status'>>> VAULT STATUS: OPERATIONAL | #BZ ACTIVE</div>|        <div class='vibe-controls'>
-            <button class='btn' onclick='setVibe("vibe-flicker")'>FLICKER</button>
-            <button class='btn' onclick='setVibe("vibe-neon")'>NEON</button>
-            <button class='btn' onclick='setVibe("vibe-satire")'>SATIRE</button>
-            <button class='btn' onclick='setVibe("")'>CLEAR</button>
-        </div><div class='status' id='vault-status'>>> VAULT STATUS: OPERATIONAL | #BZ ACTIVE</div>
+            <button class='btn' onclick='clearManual()'>AUTO/ENTROPY</button>
+        </div>
+        <div class='status' id='vault-status'>>> VAULT STATUS: OPERATIONAL | #BZ ACTIVE</div>
     </header>
 
     <main>
@@ -45,9 +41,9 @@
                 <p>This is where the freak-show breathes. Every log matters.</p>
             </div>
         </div>
-    
+
         <section id='live-vault'>
-            <h2>?? #LiveVault</h2>
+            <h2>🌀 #LiveVault</h2>
             <div id='vault-logs' class='grid'>
                 <!-- Logs injected here -->
             </div>
@@ -57,6 +53,6 @@
     <footer>
         <div class='status'>Stay sharp. Stay loved | Zy<3Be</div>
     </footer>
-<script src='90-Assets/vault.js'></script></body>
+    <script src='90-Assets/vault.js'></script>
+</body>
 </html>
-
