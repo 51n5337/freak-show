@@ -58,3 +58,9 @@ description: Manage website development and maintenance within the freak-show va
 - **Visual Experimentation**: Use demo.html to test sensory payloads before main deployment.
 - **AuDHD Feedback Loop**: Prioritize motion, contrast, and 'jitter' logic for high-stim environments.
 
+
+### ?? #BZ-Refresh (Self-Audit)
+- Before every commit, run: \
+ode bz-web-manager/scripts/refresh_vault.cjs\
+- This ensures the #LiveVault is always in sync with the physical notes.
+

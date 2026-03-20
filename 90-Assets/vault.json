@@ -1,14 +1,30 @@
 [
-    {
-        "name":  "03-manifesto-and-grid.md",
-        "date":  "2026-03-21 00:24"
-    },
-    {
-        "name":  "02-remote-sync.md",
-        "date":  "2026-03-21 00:09"
-    },
-    {
-        "name":  "01-init-github-io.md",
-        "date":  "2026-03-21 00:04"
-    }
+  {
+    "name": "07-entropy-engine-init.md",
+    "date": "2026-03-20 17:47"
+  },
+  {
+    "name": "06-dynamic-vibe-engine.md",
+    "date": "2026-03-20 17:42"
+  },
+  {
+    "name": "05-sensory-lab-init.md",
+    "date": "2026-03-20 17:37"
+  },
+  {
+    "name": "04-live-vault-static.md",
+    "date": "2026-03-20 17:28"
+  },
+  {
+    "name": "03-manifesto-and-grid.md",
+    "date": "2026-03-20 17:24"
+  },
+  {
+    "name": "02-remote-sync.md",
+    "date": "2026-03-20 17:09"
+  },
+  {
+    "name": "01-init-github-io.md",
+    "date": "2026-03-20 17:04"
+  }
 ]
