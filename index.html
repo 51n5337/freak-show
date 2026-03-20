@@ -30,7 +30,7 @@
         <div class='grid'>
             <div class='card'>
                 <h3>🧠 #Architecture</h3>
-                <p>Internal Log Viewer deployed. Markdown rendered in-situ.</p>
+                <p>Command Nexus online. Use the terminal to filter the vault.</p>
             </div>
             <div class='card'>
                 <h3>❤️ #Vibe</h3>
@@ -38,7 +38,7 @@
             </div>
             <div class='card'>
                 <h3>🌀 #Synergy</h3>
-                <p>The Void Terminal is hungry. Feed it your data.</p>
+                <p>Terminal Commands: [ls, find, vibe, clear, help]</p>
             </div>
         </div>
 
@@ -50,8 +50,13 @@
         </section>
 
         <section id='void-terminal' class='void-terminal'>
-            <span class='void-prompt'>>> FEED THE VOID:</span>
-            <input type='text' id='void-input' class='void-input' placeholder='Type something to be digested...' autocomplete='off'>
+            <div id='terminal-output' class='status' style='margin-bottom: 1rem; height: 100px; overflow-y: auto; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;'>
+                >> TERMINAL READY. TYPE 'HELP' FOR COMMANDS.
+            </div>
+            <div style='display: flex; align-items: center;'>
+                <span class='void-prompt'>>></span>
+                <input type='text' id='void-input' class='void-input' placeholder='ls, find <query>, vibe <name>, clear...' autocomplete='off' autofocus>
+            </div>
         </section>
     </main>
 
