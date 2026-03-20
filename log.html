@@ -13,6 +13,8 @@
         .log-content code { background: rgba(255,255,255,0.05); padding: 2px 5px; color: var(--accent); }
         .log-content pre { background: #000; padding: 1rem; border: 1px solid var(--border); overflow-x: auto; }
         .log-header { margin-bottom: 2rem; border-bottom: 2px solid var(--accent); padding-bottom: 1rem; }
+        .backlinks { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+        .wikilink { color: var(--accent); text-decoration: underline; cursor: pointer; }
     </style>
 </head>
 <body class='vibe-flicker'>
@@ -27,6 +29,10 @@
         </div>
         <div id="log-content" class="log-content">
             <!-- Markdown rendered here -->
+        </div>
+        <div id="backlinks-area" class="backlinks">
+            <div class="status">>> BACKLINKS (NODES MENTIONING THIS)</div>
+            <div id="backlinks-list" class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));"></div>
         </div>
     </main>
 
@@ -47,13 +53,40 @@
             }
 
             try {
+                // 1. Fetch File
                 const response = await fetch(`10-Daily-Notes/${fileName}`);
                 if (!response.ok) throw new Error("File not found");
-                const text = await response.text();
+                let text = await response.text();
                 
+                // 2. Parse [[WikiLinks]]
+                text = text.replace(/\[\[(.*?)\]\]/g, (match, p1) => {
+                    // Normalize link (find file matching title)
+                    return `<a href="log.html?file=${p1}.md" class="wikilink">${p1}</a>`;
+                });
+
                 document.getElementById('log-title').innerText = fileName.replace('.md', '').toUpperCase();
                 document.getElementById('log-meta').innerText = `>> SOURCE: ${fileName} | VIBE: ${savedVibe.toUpperCase()}`;
                 document.getElementById('log-content').innerHTML = marked.parse(text);
+
+                // 3. Handle Backlinks
+                const vaultRes = await fetch('90-Assets/vault.json');
+                const vaultData = await vaultRes.json();
+                const currentTitle = fileName.replace('.md', '');
+                
+                const mentions = vaultData.logs.filter(l => l.links.includes(currentTitle) && l.name !== fileName);
+                const list = document.getElementById('backlinks-list');
+                
+                if (mentions.length > 0) {
+                    list.innerHTML = mentions.map(m => `
+                        <div class='card' style='padding: 0.5rem;'>
+                            <h3>${m.title}</h3>
+                            <a href='log.html?file=${m.name}' class='btn'>>> JUMP</a>
+                        </div>
+                    `).join('');
+                } else {
+                    list.innerHTML = "<div class='status'>NO BACKLINKS DETECTED. THIS NODE IS ISOLATED.</div>";
+                }
+
             } catch (e) {
                 document.getElementById('log-content').innerHTML = `<h1>ERROR: FAILED TO LOAD ${fileName}</h1><p>${e.message}</p>`;
             }

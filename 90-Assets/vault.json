@@ -1,46 +1,90 @@
-[
-  {
-    "name": "11-terminal-nexus-init.md",
-    "date": "2026-03-20 18:09"
-  },
-  {
-    "name": "10-log-viewer-init.md",
-    "date": "2026-03-20 18:07"
-  },
-  {
-    "name": "09-shadow-manifesto-init.md",
-    "date": "2026-03-20 17:59"
-  },
-  {
-    "name": "08-self-auditor-init.md",
-    "date": "2026-03-20 17:52"
-  },
-  {
-    "name": "07-entropy-engine-init.md",
-    "date": "2026-03-20 17:47"
-  },
-  {
-    "name": "06-dynamic-vibe-engine.md",
-    "date": "2026-03-20 17:42"
-  },
-  {
-    "name": "05-sensory-lab-init.md",
-    "date": "2026-03-20 17:37"
-  },
-  {
-    "name": "04-live-vault-static.md",
-    "date": "2026-03-20 17:28"
-  },
-  {
-    "name": "03-manifesto-and-grid.md",
-    "date": "2026-03-20 17:24"
-  },
-  {
-    "name": "02-remote-sync.md",
-    "date": "2026-03-20 17:09"
-  },
-  {
-    "name": "01-init-github-io.md",
-    "date": "2026-03-20 17:04"
-  }
-]
+{
+  "last_update": "2026-03-20T18:17:42.280Z",
+  "total_logs": 12,
+  "logs": [
+    {
+      "name": "12-vibe-scheduler-init.md",
+      "title": "12-vibe-scheduler-init",
+      "date": "2026-03-20 18:14",
+      "links": [],
+      "size": 399
+    },
+    {
+      "name": "11-terminal-nexus-init.md",
+      "title": "11-terminal-nexus-init",
+      "date": "2026-03-20 18:09",
+      "links": [],
+      "size": 343
+    },
+    {
+      "name": "10-log-viewer-init.md",
+      "title": "10-log-viewer-init",
+      "date": "2026-03-20 18:07",
+      "links": [],
+      "size": 402
+    },
+    {
+      "name": "09-shadow-manifesto-init.md",
+      "title": "09-shadow-manifesto-init",
+      "date": "2026-03-20 17:59",
+      "links": [],
+      "size": 302
+    },
+    {
+      "name": "08-self-auditor-init.md",
+      "title": "08-self-auditor-init",
+      "date": "2026-03-20 17:52",
+      "links": [],
+      "size": 211
+    },
+    {
+      "name": "07-entropy-engine-init.md",
+      "title": "07-entropy-engine-init",
+      "date": "2026-03-20 17:47",
+      "links": [],
+      "size": 299
+    },
+    {
+      "name": "06-dynamic-vibe-engine.md",
+      "title": "06-dynamic-vibe-engine",
+      "date": "2026-03-20 17:42",
+      "links": [],
+      "size": 278
+    },
+    {
+      "name": "05-sensory-lab-init.md",
+      "title": "05-sensory-lab-init",
+      "date": "2026-03-20 17:37",
+      "links": [],
+      "size": 240
+    },
+    {
+      "name": "04-live-vault-static.md",
+      "title": "04-live-vault-static",
+      "date": "2026-03-20 17:28",
+      "links": [],
+      "size": 194
+    },
+    {
+      "name": "03-manifesto-and-grid.md",
+      "title": "03-manifesto-and-grid",
+      "date": "2026-03-20 17:24",
+      "links": [],
+      "size": 207
+    },
+    {
+      "name": "02-remote-sync.md",
+      "title": "02-remote-sync",
+      "date": "2026-03-20 17:09",
+      "links": [],
+      "size": 169
+    },
+    {
+      "name": "01-init-github-io.md",
+      "title": "01-init-github-io",
+      "date": "2026-03-20 17:04",
+      "links": [],
+      "size": 107
+    }
+  ]
+}

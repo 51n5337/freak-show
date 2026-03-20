@@ -42,7 +42,7 @@ function renderLogs(logs, seed = Math.floor(Date.now() / 1000)) {
         return `
             <div class='card ${cardVibe}'>
                 <div class='status'>${log.date}</div>
-                <h3>${log.name.replace('.md', '')}</h3>
+                <h3>${log.title}</h3>
                 <a href='log.html?file=${log.name}' class='btn'>>> OPEN LOG</a>
             </div>
         `;
@@ -57,14 +57,14 @@ async function loadVault() {
     if (manualVibe && manualVibe !== 'null') {
         setVibe(manualVibe, true);
     } else {
-        // DEFAULT TO SCHEDULED VIBE
         document.body.className = scheduled.class;
         document.getElementById('vault-status').innerText = `>> VAULT STATUS: SCHEDULED | #${scheduled.name}`;
     }
 
     try {
         const response = await fetch('90-Assets/vault.json');
-        allLogs = await response.json();
+        const data = await response.json();
+        allLogs = data.logs;
         renderLogs(allLogs, seed);
     } catch (e) {
         console.error("Vault index load failed.", e);
@@ -100,12 +100,10 @@ async function loadVault() {
                         updateTerminal(`VIBE SWITCHED TO: ${args[0] || 'DEFAULT'}`);
                         break;
                     case 'time':
-                    case 'date':
                         const now = new Date();
                         updateTerminal(`CURRENT TIME: ${now.toLocaleTimeString()} | SCHEDULED: #${scheduled.name}`);
                         break;
                     case 'clear':
-                    case 'reset':
                         document.getElementById('terminal-output').innerHTML = '>> TERMINAL CLEARED.';
                         renderLogs(allLogs);
                         break;
