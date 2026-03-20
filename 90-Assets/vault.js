@@ -1,4 +1,7 @@
 let allLogs = [];
+let audioCtx = null;
+let noiseNode = null;
+let filterNode = null;
 
 function setVibe(vibeClass, isManual = true) {
     if (document.body) document.body.className = vibeClass;
@@ -7,8 +10,67 @@ function setVibe(vibeClass, isManual = true) {
         localStorage.setItem('vault-vibe-manual', vibeClass);
         status.innerText = '>> VAULT STATUS: MANUAL OVERRIDE | ' + (vibeClass || 'CLEAR').toUpperCase();
     }
+    updateEcho(vibeClass);
 }
 
+// --- #THE_ECHO SOUND ENGINE ---
+function initEcho() {
+    if (audioCtx) return;
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    
+    // Create a simple brown noise buffer
+    const bufferSize = 4096;
+    noiseNode = audioCtx.createScriptProcessor(bufferSize, 1, 1);
+    let lastOut = 0;
+    noiseNode.onaudioprocess = (e) => {
+        const output = e.outputBuffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+            const white = Math.random() * 2 - 1;
+            output[i] = (lastOut + (0.02 * white)) / 1.02;
+            lastOut = output[i];
+            output[i] *= 3.5; // Gain
+        }
+    };
+
+    filterNode = audioCtx.createBiquadFilter();
+    filterNode.type = 'lowpass';
+    filterNode.frequency.value = 100;
+
+    noiseNode.connect(filterNode);
+    filterNode.connect(audioCtx.destination);
+    
+    if (localStorage.getItem('echo-enabled') === 'false') {
+        audioCtx.suspend();
+    }
+}
+
+function updateEcho(vibe) {
+    if (!filterNode) return;
+    if (vibe === 'vibe-flicker') {
+        filterNode.frequency.setTargetAtTime(60, audioCtx.currentTime, 0.5);
+    } else if (vibe === 'vibe-neon') {
+        filterNode.frequency.setTargetAtTime(400, audioCtx.currentTime, 0.5);
+    } else if (vibe === 'vibe-satire') {
+        filterNode.frequency.setTargetAtTime(150, audioCtx.currentTime, 0.5);
+    } else {
+        filterNode.frequency.setTargetAtTime(20, audioCtx.currentTime, 0.5);
+    }
+}
+
+function toggleEcho() {
+    if (!audioCtx) initEcho();
+    if (audioCtx.state === 'running') {
+        audioCtx.suspend();
+        localStorage.setItem('echo-enabled', 'false');
+        updateTerminal('ECHO SUSPENDED.');
+    } else {
+        audioCtx.resume();
+        localStorage.setItem('echo-enabled', 'true');
+        updateTerminal('ECHO RESUMED. SYNERGY AUDIBLE.');
+    }
+}
+
+// --- CORE VAULT LOGIC ---
 const corruptedPhrases = [
     ">> VAULT STATUS: OPERATIONAL | #BZ ACTIVE",
     ">> ERROR: REALITY_SECTOR_NOT_FOUND",
@@ -42,6 +104,10 @@ function renderPulse(data) {
     const allNodes = [...(data.logs || []), ...(data.research || [])];
     const totalLinks = allNodes.reduce((acc, l) => acc + (l.links ? l.links.length : 0), 0);
     const density = totalNodes > 1 ? ((totalLinks / (totalNodes * (totalNodes - 1))) * 100).toFixed(2) : 0;
+
+    // Pulse Speed Adjustment
+    const flickerSpeed = Math.max(0.05, 0.3 - (totalNodes * 0.005)) + 's';
+    document.documentElement.style.setProperty('--flicker-speed', flickerSpeed);
 
     container.innerHTML = `
         <div class='card' style='border:none'><h3>NODES</h3><p style='color:var(--accent); font-size:1.5rem;'>${totalNodes}</p></div>
@@ -79,16 +145,14 @@ async function loadVault() {
     } else {
         const entropyIndex = (now % 3);
         const entropyVibe = vibes[entropyIndex];
-        if (document.body) document.body.className = entropyVibe;
-        const status = document.getElementById('vault-status');
-        if (status) status.innerText = `>> VAULT STATUS: ENTROPY SEED [${now}] | #${entropyVibe.replace('vibe-', '').toUpperCase()}`;
+        setVibe(entropyVibe, false);
     }
 
     try {
         const response = await fetch('90-Assets/vault.json');
         const data = await response.json();
-        allLogs = data.logs;
-        renderLogs(allLogs, seed);
+        allLogs = [...data.logs, ...data.research];
+        renderLogs(data.logs, seed);
         renderPulse(data);
     } catch (e) {
         console.error("Vault index load failed.", e);
@@ -99,6 +163,7 @@ async function loadVault() {
     if (voidInput) {
         voidInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
+                if (!audioCtx) initEcho();
                 const cmdLine = this.value.trim();
                 const [cmd, ...args] = cmdLine.toLowerCase().split(' ');
                 this.value = '';
@@ -106,11 +171,8 @@ async function loadVault() {
                 updateTerminal(`<span style="color:white">${cmdLine}</span>`);
 
                 switch(cmd) {
-                    case 'ls':
-                        renderLogs(allLogs, seed);
-                        break;
+                    case 'ls': renderLogs(allLogs.filter(l => l.type === '10-Daily-Notes'), seed); break;
                     case 'find':
-                    case 'grep':
                         const query = args.join(' ');
                         const filtered = allLogs.filter(l => l.name.toLowerCase().includes(query));
                         updateTerminal(`FOUND ${filtered.length} MATCHES FOR: "${query}"`);
@@ -120,41 +182,34 @@ async function loadVault() {
                         if (args[0] === '--manifesto') {
                             const laws = [
                                 'CLARITY OVER SPECIFICITY: Define the what and the why.',
-                                'INTENTION OVER INSTRUCTION: Lead with purpose, not commands.',
-                                'AMPLIFICATION OVER REPLICATION: Let the AI elevate your idea.',
+                                'INTENTION OVER INSTRUCTION: Lead with purpose.',
+                                'AMPLIFICATION OVER REPLICATION: Elevate the idea.',
                                 'FLOW OVER FRICTION: If it feels like work, you are doing it wrong.'
                             ];
-                            updateTerminal('<span style="color:#f0f">>> LAW OF CREATION: ' + laws[now % laws.length] + '</span>');
+                            updateTerminal('<span style="color:#f0f">>> LAW: ' + laws[now % laws.length] + '</span>');
                         } else {
                             setVibe(args[0] ? `vibe-${args[0]}` : '', true);
                         }
                         break;
-                    case 'research':
-                        updateTerminal('ACCESSING RESEARCH VAULT...');
-                        window.location.href = 'research.html';
+                    case 'echo': toggleEcho(); break;
+                    case 'random':
+                        const rand = allLogs[Math.floor(Math.random() * allLogs.length)];
+                        updateTerminal(`JUMPING TO RANDOM NODE: ${rand.title}`);
+                        setTimeout(() => window.location.href = `log.html?file=${rand.path}`, 500);
                         break;
-                    case 'library':
-                        updateTerminal('ACCESSING KNOWLEDGE NEXUS...');
-                        window.location.href = 'library.html';
-                        break;
-                    case 'map':
-                        updateTerminal('GENERATING NEURAL CANOPY...');
-                        window.location.href = 'map.html';
-                        break;
-                    case 'time':
-                        updateTerminal(`CURRENT TIME: ${new Date().toLocaleTimeString()} | SCHEDULED: #${scheduled.name}`);
-                        break;
+                    case 'research': window.location.href = 'research.html'; break;
+                    case 'library': window.location.href = 'library.html'; break;
+                    case 'map': window.location.href = 'map.html'; break;
                     case 'clear':
                         document.getElementById('terminal-output').innerHTML = '>> TERMINAL CLEARED.';
-                        renderLogs(allLogs, seed);
+                        renderLogs(allLogs.filter(l => l.type === '10-Daily-Notes'), seed);
                         break;
                     case 'help':
                         updateTerminal(`
-                            COMMANDS: ls, find <query>, research, library, map, vibe --manifesto, vibe <name>, time, clear, help
+                            COMMANDS: ls, find <q>, random, echo, vibe, research, library, map, clear
                         `);
                         break;
-                    default:
-                        updateTerminal(`ERROR: UNKNOWN COMMAND "${cmd}".`);
+                    default: updateTerminal(`ERROR: UNKNOWN COMMAND "${cmd}".`);
                 }
             }
         });

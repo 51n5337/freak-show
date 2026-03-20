@@ -1,4 +1,11 @@
-:root { --bg: #0b0b0b; --text: #e0e0e0; --accent: #ff4d4d; --border: #333; --font: 'Courier New', Courier, monospace; }
+:root { 
+    --bg: #0b0b0b; 
+    --text: #e0e0e0; 
+    --accent: #ff4d4d; 
+    --border: #333; 
+    --font: 'Courier New', Courier, monospace; 
+    --flicker-speed: 0.15s;
+}
 body { 
     background: var(--bg); color: var(--text); font-family: var(--font); margin: 0; padding: 2rem; line-height: 1.6; 
     transition: background 0.5s, color 0.5s;
@@ -31,7 +38,7 @@ h1 { font-size: 2.5rem; letter-spacing: 0.3em; text-transform: uppercase; color:
 /* VIBE: #THEFLICKER */
 .vibe-flicker { --bg: #050505; --text: #ff4d4d; --accent: #ff4d4d; --border: #600; }
 .vibe-flicker::before { content: ' '; display: block; position: fixed; top: 0; left: 0; bottom: 0; right: 0; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); z-index: 9999; background-size: 100% 2px, 3px 100%; pointer-events: none; }
-.vibe-flicker h1, .vibe-flicker h2 { animation: flicker 0.15s infinite; }
+.vibe-flicker h1, .vibe-flicker h2 { animation: flicker var(--flicker-speed) infinite; }
 
 /* VIBE: #NEONVOMIT */
 .vibe-neon { --bg: #000; --text: #0ff; --accent: #f0f; --border: #0ff; }
