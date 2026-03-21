@@ -13,6 +13,13 @@
     </header>
     <main>
         <section class='manifesto'>
+            <p>>> ACCESSING #BZ_ORIGINALS [SYNTHESIS SERIES]...</p>
+        </section>
+        <div id='articles-container' class='grid' style='margin-bottom: 4rem;'>
+            <!-- Articles injected here -->
+        </div>
+
+        <section class='manifesto'>
             <p>>> ACCESSING STRUCTURED INTELLIGENCE LAYER...<br>
             >> SOURCE: 12-ACTIVE-MEMORY/</p>
         </section>
@@ -33,6 +40,20 @@
             const response = await fetch('90-Assets/vault.json');
             const data = await response.json();
             
+            // Load BZ Originals
+            const articlesContainer = document.getElementById('articles-container');
+            if (data.articles && data.articles.length > 0) {
+                articlesContainer.innerHTML = data.articles.map(a => `
+                    <div class='card vibe-flicker' style='border-color: var(--accent); border-style: double;'>
+                        <div class='status'>#BZ_ORIGINAL | ${a.date}</div>
+                        <h3 style='color: var(--accent);'>${a.title}</h3>
+                        <a href='log.html?file=${a.path}' class='btn'>>> ACCESS ARTICLE</a>
+                    </div>
+                `).join('');
+            } else {
+                articlesContainer.innerHTML = "<div class='status'>NO ORIGINALS PUBLISHED.</div>";
+            }
+
             // Load Standard Research
             const container = document.getElementById('research-nodes');
             container.innerHTML = data.research.map(r => `

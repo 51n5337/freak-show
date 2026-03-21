@@ -113,6 +113,7 @@ function renderPulse(data) {
     container.innerHTML = `
         <div class='card' style='border:none'><h3>NODES</h3><p style='color:var(--accent); font-size:1.5rem;'>${totalNodes}</p></div>
         <div class='card' style='border:none'><h3>LINKS</h3><p style='color:var(--accent); font-size:1.5rem;'>${totalLinks}</p></div>
+        <div class='card' style='border:none'><h3>ARTICLES</h3><p style='color:var(--accent); font-size:1.5rem;'>${data.total_articles || 0}</p></div>
         <div class='card' style='border:none'><h3>DENSITY</h3><p style='color:var(--accent); font-size:1.5rem;'>${density}%</p></div>
     `;
 }

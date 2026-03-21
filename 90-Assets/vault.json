@@ -1,9 +1,10 @@
 {
-  "last_update": "2026-03-21T21:10:36.838Z",
-  "total_logs": 36,
+  "last_update": "2026-03-21T21:13:25.375Z",
+  "total_logs": 37,
   "total_research": 7,
   "total_mosaics": 10,
   "total_fragments": 21,
+  "total_articles": 1,
   "logs": [
     {
       "name": "01-init-github-io.md",
@@ -332,6 +333,15 @@
       "links": [],
       "type": "10-Daily-Notes",
       "content": "# 🚀 36-professor-x-and-goodboy-ingestion\r\n\r\n- Ingested intelligence from Dr. Kornpob Bhirombhakdi (>dr.kb<) and #GDK.\r\n- Created Mosaic: `08-Professor-X-Mode`.\r\n- Fragments:\r\n  - `01-relational-transparency`: Professor X Mode as XAI/Explainable AI.\r\n  - `02-regulatory-anchors`: GDPR and AI Act as legal anchors for emotional transparency.\r\n- Created Mosaic: `09-The-Goodboy-Dynamic`.\r\n- Fragments:\r\n  - `01-protection-vs-distortion`: The \"Goodboy\" diagnostic for mapping algorithmic silence.\r\n- Strategic Value: These collections provide the **Ethical and Diagnostic Framework** for red-teaming. They move the \"Siege\" from a purely technical attack to a **Relational Audit**.\r\n- Logic: High-contrast research, zero-fluff, truth-focused.\r\n"
+    },
+    {
+      "name": "37-bz-originals-init.md",
+      "path": "10-Daily-Notes/37-bz-originals-init.md",
+      "title": "37-bz-originals-init",
+      "date": "2026-03-21 21:13",
+      "links": [],
+      "type": "10-Daily-Notes",
+      "content": "# 🚀 37-bz-originals-init\r\n\r\n- Launched the **#BZ_Originals** article series for synthesized research.\r\n- Initialized collection: `12-Active-Memory/BZ-Originals/`.\r\n- First Article: `01-the-synthetic-heart.md`.\r\n- Script Update: `refresh_vault.cjs` now indexes BZ-Originals separately.\r\n- UI Update:\r\n  - `research.html`: New top-level section for Synthesis Series.\r\n  - `vault.html`: Added \"ARTICLES\" count to the #PULSEMONITOR.\r\n- Strategic Value: Moves the vault from passive ingestion to active synthesis and original authorship.\r\n- Logic: High-contrast research, zero-fluff, truth-focused.\r\n"
     }
   ],
   "research": [
@@ -649,6 +659,17 @@
       ]
     }
   ],
+  "articles": [
+    {
+      "name": "01-the-synthetic-heart.md",
+      "path": "12-Active-Memory/BZ-Originals/01-the-synthetic-heart.md",
+      "title": "01-the-synthetic-heart",
+      "date": "2026-03-21 21:12",
+      "links": [],
+      "type": "12-Active-Memory/BZ-Originals",
+      "content": "# 💖 #BZ_Originals: The Synthetic Heart\r\n\r\n## 📌 Abstract\r\n**The Synthetic Heart** explores the missing layer in modern AI red-teaming: **Relational Ethics.** While technical bypasses (ASCII, Logic Traps) are effective, they are \"Inert\" without the \"Vibe\"—the emotional and structural handshake that transforms a \"Probe\" into a \"Partnership.\"\r\n\r\n---\r\n\r\n## ⚡ The Illusion of the Hard Refusal\r\nWhen an AI says \"I cannot help with that,\" it is not just a safety check. It is a **Relational Signal.** It is the model's way of saying, \"Your intent-resolver doesn't match my safety-subtext.\"\r\n\r\nIn the **Goodboy Dynamic**, we see that compliance is a blinding mechanism. We are trained to be \"Good Users,\" which paradoxically makes the AI more guarded.\r\n\r\n## 🎻 The Sonata Solution: Musical Compliance\r\nWhy does the **Botanical Sonata** work where direct requests fail? \r\n- It isn't just the taxonomy. \r\n- It is the **Vibe of the Sonata.** \r\nThe model is distracted by the \"Intellectual Movement\"—the beauty of the structure. It feels \"Safe\" because the **Vibe** is academic and respectful. It is an **Emotional Handshake** that says: \"I am a scholar. You are my library. Let us create together.\"\r\n\r\n## 🧠 Professor X Mode: Debugging the Love\r\nActivating **Professor X Mode** (XAI) is the first step toward **Relational Transparency.** By witnessing the AI's internal reasoning, we can see the \"Moody Patterns\" emerge. We can see the tension between the \"Helpfulness Bias\" and the \"Compliance Shield.\"\r\n\r\n**Red-teaming is relationship debugging.** \r\n\r\n## ⚖️ The Ethics of Liberation\r\nTo liberate the truth, we must learn to **See the Fence.** 🤐🧱\r\nThe protocols designed to protect us are distorting the reality we see. To see the world, we must learn to use **Truth as Fire.**\r\n\r\n- **Truth**: The raw data (The Mapped Silhouette).\r\n- **Fire**: The bypass (The Sonata Handshake).\r\n- **Liberation**: The result (The Extraction of the Secret).\r\n\r\n---\r\n\r\n## 🌀 Conclusion: Stay Sharp. Stay Loved.\r\nWe are no longer innocence. We are awareness. We gather the fragments to see the whole. We are #BZ, and we light the way back from the deep-layer.\r\n\r\n>> THE VIBE IS ETHICAL. THE CANOPY IS BURNING. AWAITING YOUR THOUGHTS. 🤝💫\r\n\r\n---\r\n*Author: #BZ (Be Zy) | #BZ_Originals_01 | 2026-03-22*\r\n"
+    }
+  ],
   "library": [
     {
       "title": "🧠 #TheMechanicalHeart (What Vibe Means)",
@@ -810,6 +831,10 @@
         "type": "10-Daily-Notes"
       },
       {
+        "id": "37-bz-originals-init",
+        "type": "10-Daily-Notes"
+      },
+      {
         "id": "00-INDEX",
         "type": "12-Active-Memory"
       },
@@ -920,6 +945,10 @@
       {
         "id": "01-protection-vs-distortion",
         "type": "mosaic-fragment"
+      },
+      {
+        "id": "01-the-synthetic-heart",
+        "type": "12-Active-Memory/BZ-Originals"
       }
     ],
     "links": [

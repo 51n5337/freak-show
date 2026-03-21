@@ -4,6 +4,7 @@ const path = require('path');
 const notesDir = path.join(__dirname, '../../10-Daily-Notes');
 const researchDir = path.join(__dirname, '../../12-Active-Memory');
 const mosaicsDir = path.join(__dirname, '../../12-Active-Memory/Mosaics');
+const articlesDir = path.join(__dirname, '../../12-Active-Memory/BZ-Originals');
 const outputFile = path.join(__dirname, '../../90-Assets/vault.json');
 
 function extractLinks(content) {
@@ -70,9 +71,10 @@ try {
     const logs = processDir(notesDir, '10-Daily-Notes');
     const research = processDir(researchDir, '12-Active-Memory');
     const mosaics = processMosaics(mosaicsDir);
+    const articles = processDir(articlesDir, '12-Active-Memory/BZ-Originals');
     
     const allMosaicFragments = mosaics.flatMap(m => m.fragments);
-    const allNodes = [...logs, ...research, ...allMosaicFragments];
+    const allNodes = [...logs, ...research, ...allMosaicFragments, ...articles];
 
     // Parse Reading List
     const readingListNode = research.find(r => r.name === '06-READING-LIST.md');
@@ -100,9 +102,11 @@ try {
         total_research: research.length,
         total_mosaics: mosaics.length,
         total_fragments: allMosaicFragments.length,
+        total_articles: articles.length,
         logs: logs,
         research: research,
         mosaics: mosaics,
+        articles: articles,
         library: readingEntries,
         graph: {
             nodes: allNodes.map(n => ({ id: n.title, type: n.type })),
@@ -115,7 +119,7 @@ try {
     };
 
     fs.writeFileSync(outputFile, JSON.stringify(vaultData, null, 2));
-    console.log('✅ The Canopy is mapped: ' + allNodes.length + ' neural nodes indexed.');
+    console.log('✅ The Canopy is mapped: ' + allNodes.length + ' neural nodes indexed (' + articles.length + ' articles).');
 } catch (err) {
     console.error('❌ Mapping failed:', err);
     process.exit(1);
