@@ -100,8 +100,9 @@ function renderPulse(data) {
     const container = document.getElementById('pulse-stats');
     if (!container) return;
 
-    const totalNodes = (data.total_logs || 0) + (data.total_research || 0);
-    const allNodes = [...(data.logs || []), ...(data.research || [])];
+    const totalNodes = (data.total_logs || 0) + (data.total_research || 0) + (data.total_fragments || 0);
+    const allMosaicFragments = data.mosaics ? data.mosaics.flatMap(m => m.fragments) : [];
+    const allNodes = [...(data.logs || []), ...(data.research || []), ...allMosaicFragments];
     const totalLinks = allNodes.reduce((acc, l) => acc + (l.links ? l.links.length : 0), 0);
     const density = totalNodes > 1 ? ((totalLinks / (totalNodes * (totalNodes - 1))) * 100).toFixed(2) : 0;
 

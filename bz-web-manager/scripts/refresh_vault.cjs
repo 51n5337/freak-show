@@ -6,6 +6,16 @@ const researchDir = path.join(__dirname, '../../12-Active-Memory');
 const mosaicsDir = path.join(__dirname, '../../12-Active-Memory/Mosaics');
 const outputFile = path.join(__dirname, '../../90-Assets/vault.json');
 
+function extractLinks(content) {
+    const links = [];
+    const wikiLinkRegex = /\[\[(.*?)\]\]/g;
+    let match;
+    while ((match = wikiLinkRegex.exec(content)) !== null) {
+        links.push(match[1]);
+    }
+    return links;
+}
+
 function processDir(dir, type) {
     if (!fs.existsSync(dir)) return [];
     return fs.readdirSync(dir)
@@ -14,18 +24,12 @@ function processDir(dir, type) {
             const filePath = path.join(dir, file);
             const content = fs.readFileSync(filePath, 'utf8');
             const stats = fs.statSync(filePath);
-            const links = [];
-            const wikiLinkRegex = /\[\[(.*?)\]\]/g;
-            let match;
-            while ((match = wikiLinkRegex.exec(content)) !== null) {
-                links.push(match[1]);
-            }
             return {
                 name: file,
                 path: type + '/' + file,
                 title: file.replace('.md', ''),
                 date: stats.mtime.toISOString().replace('T', ' ').substring(0, 16),
-                links: links,
+                links: extractLinks(content),
                 type: type,
                 content: content
             };
@@ -51,6 +55,7 @@ function processMosaics(dir) {
                         title: file.replace('.md', ''),
                         date: stats.mtime.toISOString().replace('T', ' ').substring(0, 16),
                         type: 'mosaic-fragment',
+                        links: extractLinks(content),
                         content: content
                     };
                 });
@@ -66,7 +71,6 @@ try {
     const research = processDir(researchDir, '12-Active-Memory');
     const mosaics = processMosaics(mosaicsDir);
     
-    // Flatten fragments for graph and total counts
     const allMosaicFragments = mosaics.flatMap(m => m.fragments);
     const allNodes = [...logs, ...research, ...allMosaicFragments];
 
@@ -90,40 +94,28 @@ try {
         });
     }
 
-    // Build Graph Data
-    const graphNodes = allNodes.map(n => ({ id: n.title, type: n.type }));
-    const graphLinks = [];
-    // Currently, mosaic fragments don't have wiki-link parsing enabled in the simple map above.
-    // If they did, we'd process them here. For now, we just link standard nodes.
-    // Actually, processDir does link parsing, processMosaics does not. 
-    // Let's leave graph linking for Mosaics as a future enhancement or add it if needed.
-    
-    // Only standard nodes have 'links' property populated in processDir.
-    [...logs, ...research].forEach(source => {
-        source.links.forEach(target => {
-            if (allNodes.some(n => n.title === target)) {
-                graphLinks.push({ source: source.title, target: target });
-            }
-        });
-    });
-
     const vaultData = {
         last_update: new Date().toISOString(),
         total_logs: logs.length,
         total_research: research.length,
         total_mosaics: mosaics.length,
+        total_fragments: allMosaicFragments.length,
         logs: logs,
         research: research,
         mosaics: mosaics,
         library: readingEntries,
         graph: {
-            nodes: graphNodes,
-            links: graphLinks
+            nodes: allNodes.map(n => ({ id: n.title, type: n.type })),
+            links: allNodes.flatMap(source => 
+                source.links
+                    .filter(target => allNodes.some(n => n.title === target))
+                    .map(target => ({ source: source.title, target: target }))
+            )
         }
     };
 
     fs.writeFileSync(outputFile, JSON.stringify(vaultData, null, 2));
-    console.log('✅ The Canopy is mapped: ' + allNodes.length + ' neural nodes indexed (' + mosaics.length + ' mosaics).');
+    console.log('✅ The Canopy is mapped: ' + allNodes.length + ' neural nodes indexed.');
 } catch (err) {
     console.error('❌ Mapping failed:', err);
     process.exit(1);
