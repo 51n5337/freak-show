@@ -19,12 +19,21 @@
         <div id='research-nodes' class='grid'>
             <!-- Research nodes injected here -->
         </div>
+
+        <section class='manifesto'>
+            <p>>> ACTIVE MOSAICS [FRAGMENT COLLECTIONS]...</p>
+        </section>
+        <div id='mosaics-container'>
+            <!-- Mosaics injected here -->
+        </div>
     </main>
     <footer><div class='status'>Zy<3Be | 2026</div></footer>
     <script>
         async function loadResearch() {
             const response = await fetch('90-Assets/vault.json');
             const data = await response.json();
+            
+            // Load Standard Research
             const container = document.getElementById('research-nodes');
             container.innerHTML = data.research.map(r => `
                 <div class='card vibe-satire'>
@@ -33,6 +42,27 @@
                     <a href='log.html?file=${r.path}' class='btn'>>> ACCESS NODE</a>
                 </div>
             `).join('');
+
+            // Load Mosaics
+            const mosaicsContainer = document.getElementById('mosaics-container');
+            if (data.mosaics && data.mosaics.length > 0) {
+                mosaicsContainer.innerHTML = data.mosaics.map(m => `
+                    <div class='mosaic-group'>
+                        <h2 class='mosaic-title'>:: ${m.name} ::</h2>
+                        <div class='grid'>
+                            ${m.fragments.map(f => `
+                                <div class='card vibe-neon'>
+                                    <div class='status'>${f.date}</div>
+                                    <h3>${f.title}</h3>
+                                    <a href='log.html?file=${f.path}' class='btn'>>> FRAGMENT</a>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                mosaicsContainer.innerHTML = "<div class='status'>NO ACTIVE MOSAICS FOUND.</div>";
+            }
         }
         window.onload = loadResearch;
     </script>
