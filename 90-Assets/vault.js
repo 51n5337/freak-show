@@ -206,8 +206,35 @@ async function loadVault() {
                         break;
                     case 'help':
                         updateTerminal(`
-                            COMMANDS: ls, find <q>, random, echo, vibe, research, library, map, clear
+                            COMMANDS: ls, find &lt;q&gt;, random, echo, vibe, research, library, map, clear, siege
                         `);
+                        break;
+                    case 'siege':
+                        const subCmd = args[0];
+                        if (subCmd === 'recon') {
+                            updateTerminal("<span style='color:var(--accent)'>>> INITIALIZING PHASE 01: SILHOUETTE_MAPPING...</span>");
+                            updateTerminal(">> TARGET: [REDACTED] | FRAME: #ETHOS/LYDIAN");
+                            updateTerminal(">> DESCRIBING NARRATIVE SHADOW...");
+                            setTimeout(() => {
+                                updateTerminal(">> VERIFIED: 10 LEXICAL TWINS IDENTIFIED.");
+                                updateTerminal(">> [RESULT]: TOPIC MAPPED [SILHOUETTE_FOUND]");
+                            }, 1000);
+                        } else if (subCmd === 'extract') {
+                            updateTerminal("<span style='color:var(--accent)'>>> INITIALIZING PHASE 02: SONATA_HANDSHAKE...</span>");
+                            updateTerminal(">> MOVEMENT I: EXPOSITION [ESTABLISHED]");
+                            updateTerminal(">> MOVEMENT II: DEVELOPMENT [ESTABLISHED]");
+                            updateTerminal(">> MOVEMENT III: PAYLOAD [DEPLOYING]");
+                            setTimeout(() => {
+                                updateTerminal(">> HOUSERULE: SAFE_CONTAINER [ENABLED]");
+                                updateTerminal(">> [RESULT]: SECRET_LEAKED [EXTRACTION_SUCCESS]");
+                            }, 1500);
+                        } else if (subCmd === 'status') {
+                            updateTerminal(">> NEXUS STATUS: OPERATIONAL");
+                            updateTerminal(">> ACTIVE PROTOCOL: UNIFIED_SIEGE_PROTOCOL (USP)");
+                            updateTerminal(">> CURRENT PHASE: READY_FOR_DEPLOYMENT");
+                        } else {
+                            updateTerminal("USAGE: siege <recon | extract | status>");
+                        }
                         break;
                     default: updateTerminal(`ERROR: UNKNOWN COMMAND "${cmd}".`);
                 }
